@@ -10,3 +10,5 @@
 * Silje Tyrihjell
 * Navjot Singh
 * Aneesha Mathur
+
+(Remember to add photos!)
