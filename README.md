@@ -1,5 +1,9 @@
 # The Knights
 
+## Description
+
+## Setup Guide
+
 ## Team Members
 * Chinmay Garg
 * Fredrik Soermo
