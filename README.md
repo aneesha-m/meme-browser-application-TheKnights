@@ -1,4 +1,4 @@
-# The Knights
+# Meme Browser
 
 ## Description
 
