@@ -2,6 +2,8 @@
 
 ## Description
 
+The website allows users to create posts that contain a meme (image) and a title associated with the image. [Tags support would be added in the future as well]. They will be able to like/dislike the image and comment on the images to share their viewpoint. 
+
 ## Setup Guide
 
 ## Team Members
