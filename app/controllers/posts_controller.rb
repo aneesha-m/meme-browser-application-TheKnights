@@ -1,36 +1,25 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update, :delete]
+	def index
+		@posts = Post.all
+	end
 
-  def index
-    @posts = Post.all
-    json_response(@posts)
-  end
+	def new
+	end
 
-  def create
-    @post = Post.create!(post_params)
-    json_response(@post, :created)
-  end
+	def show
+		@post = Post.find(params[:id])
+	end
 
-  def show
-    json_response(@post)
-  end
+	def create
+		#render plain: params[:post].inspect
+		@post = Post.new(post_params)
 
-  def update
-    @post.update(post_params)
-  end
+		#calling method to save into db table
+		@post.save
+		redirect_to @post
+	end
 
-  def destroy
-    @post.destroy
-    head :no_content
-  end
-
-  private
-  def post_params
-    params.permit(:title, :img)
-  end
-
-  def set_post
-    @post = Post.find(params[:id])
-  end
-
+	private def post_params
+		params.require(:post).permit(:title, :img)
+	end
 end
