@@ -19,6 +19,13 @@ class PostsController < ApplicationController
 		redirect_to @post
 	end
 
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		#this will redirect to the root_path which is set as path to posts#index
+		redirect_to root_path 
+	end
+
 	private def post_params
 		params.require(:post).permit(:title, :img)
 	end
