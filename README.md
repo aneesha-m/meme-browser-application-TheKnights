@@ -1,4 +1,5 @@
 # Meme Browser
+<img src="https://travis-ci.com/scalableinternetservices/TheKnights.svg?branch=master" />
 
 ## Description
 
