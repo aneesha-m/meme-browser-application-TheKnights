@@ -3057,3 +3057,10 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 49ms (Views: 42.3ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/posts/new" for 127.0.0.1 at 2018-10-12 14:47:41 -0700
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 1060ms (Views: 993.6ms | ActiveRecord: 0.0ms)
+
+
