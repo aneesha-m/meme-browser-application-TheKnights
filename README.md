@@ -1,4 +1,5 @@
 # Meme Browser
+<img src="https://travis-ci.com/scalableinternetservices/TheKnights.svg?branch=master" />
 
 ## Description
 
@@ -14,6 +15,8 @@ The website allows users to create posts that contain a meme (image) and a title
 
 * Fredrik Soermo
 
+<img src="https://user-images.githubusercontent.com/7217791/46625278-27937a00-cae8-11e8-8c55-85da13c7317c.png" height="250px" width="250px" />
+
 * Silje Tyrihjell
 
 <img src="https://user-images.githubusercontent.com/7217791/46577211-f145e580-c995-11e8-9858-470773b9cfea.jpg" height="250px" width="250px" />
@@ -26,7 +29,3 @@ The website allows users to create posts that contain a meme (image) and a title
 * Aneesha Mathur
 
 <img src="https://user-images.githubusercontent.com/7217791/46577222-69141000-c996-11e8-99e7-28d31013d43d.png" height="250px" width="250px"/>
-
-(Remember to add photos!)
-
-

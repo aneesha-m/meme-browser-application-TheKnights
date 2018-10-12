@@ -1,8 +1,11 @@
 <h2><%= @post.title %></h2>
 <img src="<%= @post.img %>" width="400px" height="400px"/> 
-<br>
-<%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-<br>
+
 <br>
 <%= link_to 'Edit', edit_post_path(@post) %> | 
 <%= link_to 'Back', posts_path %> 
+<p><%= link_to "Delete", post_path(@post),
+         :data => {:confirm => "You sure?",
+                   :method => "delete"} %>
+                                   	
+</p>
