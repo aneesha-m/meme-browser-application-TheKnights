@@ -5,6 +5,20 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
+  def edit
+    @comment = @commentable.comments.find(params[:id])
+  end
+
+  def update
+    @comment = @commentable.comments.find(params[:id])
+
+    if @comment.update(comment_params)
+      redirect_to @commentable, notice: "Your comment was successfully updated"
+    else
+      render 'index'
+    end
+  end
+
   def create
     @comment = @commentable.comments.new comment_params
 
@@ -16,13 +30,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-  
+
   private
 
   def comment_params
