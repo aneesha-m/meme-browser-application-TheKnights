@@ -9,3 +9,14 @@
                    :method => "delete"} %>
                                    	
 </p>
+
+<h3>Comments</h3>
+
+<%= form_for [@post, Comment.new] do |f| %>
+<%= f.text_area :body, placeholder: "Add a comment" %><br/>
+<%= f.submit %>
+<% end %>
+
+<ul style="list-style-type:none">
+  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+</ul>
