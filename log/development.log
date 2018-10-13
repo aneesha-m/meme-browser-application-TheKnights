@@ -5884,3 +5884,792 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 52ms (Views: 47.1ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:46:36 -0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chinmaygarg/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (8.6ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (15.9ms)
+  Rendered posts/show.html.erb within layouts/application (60.1ms)
+Completed 200 OK in 361ms (Views: 330.4ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-10-12 18:46:42 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 40ms (Views: 33.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-10-12 18:47:45 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 40ms (Views: 35.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:47:48 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.2ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (8.6ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (14.3ms)
+  Rendered posts/show.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 51ms (Views: 46.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/posts/4/comments" for 127.0.0.1 at 2018-10-12 18:47:56 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dVaA9GuTLopnPicDzhQYAt2yFBhSP14JrEWs6dH055HN7bCbuO3lK7GDdFtusFZltbA2rjtHXhZhn0xRfVzQ1w==", "comment"=>{"body"=>"sup"}, "commit"=>"Create Comment", "post_id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:49
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:25
+  [1m[36mComment Create (1.1ms)[0m  [1m[32mINSERT INTO "comments" ("body", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "sup"], ["commentable_id", 4], ["commentable_type", "Post"], ["created_at", "2018-10-13 01:47:56.945889"], ["updated_at", "2018-10-13 01:47:56.945889"]]
+  ↳ app/controllers/comments_controller.rb:25
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:25
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 7ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:47:56 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.3ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (9.2ms)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 7], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [2 times] (19.1ms)
+  Rendered posts/show.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 58ms (Views: 53.3ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/comments/7" for 127.0.0.1 at 2018-10-12 18:48:03 -0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"a4NdRT0KdZ4TqndGFYvAKwbSVlBwB2EGjDA0SRRvMR3TOG0q7nS+P8UXJB61L45MbtB05hl/YRlB6tTxuMcGWw==", "id"=>"7"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:33
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:34
+  [1m[36mComment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/comments_controller.rb:34
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:34
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 5ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:48:03 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (5.1ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (11.8ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (20.4ms)
+  Rendered posts/show.html.erb within layouts/application (28.3ms)
+Completed 200 OK in 59ms (Views: 54.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:54:53 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.3ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (8.8ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (14.5ms)
+  Rendered posts/show.html.erb within layouts/application (20.6ms)
+Completed 200 OK in 74ms (Views: 68.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 18:55:10 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 33ms (Views: 28.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/4/edit" for 127.0.0.1 at 2018-10-12 18:55:24 -0700
+Processing by PostsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/edit.html.erb within layouts/application
+  Rendered posts/_form.html.erb (17.9ms)
+  Rendered posts/edit.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 64ms (Views: 57.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts" for 127.0.0.1 at 2018-10-12 18:55:25 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 48ms (Views: 42.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/comments/6/comments" for 127.0.0.1 at 2018-10-12 18:55:37 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"0M/w2z6jeGu0zVeIBGtv/pa/tNAHeGjQaWSWssKjFM5odMC07d2zymJwBNCkzyGZ/r2WZm4AaM+kvnYKbgsjiA==", "comment"=>{"body"=>"sup"}, "commit"=>"Reply", "comment_id"=>"6"}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:48
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:25
+  [1m[36mComment Create (2.5ms)[0m  [1m[32mINSERT INTO "comments" ("body", "commentable_id", "commentable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["body", "sup"], ["commentable_id", 6], ["commentable_type", "Comment"], ["created_at", "2018-10-13 01:55:37.843790"], ["updated_at", "2018-10-13 01:55:37.843790"]]
+  ↳ app/controllers/comments_controller.rb:25
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:25
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 9ms (ActiveRecord: 3.6ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:55:37 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 8], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.8ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (9.4ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (14.4ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (21.5ms)
+  Rendered posts/show.html.erb within layouts/application (28.6ms)
+Completed 200 OK in 77ms (Views: 70.7ms | ActiveRecord: 1.1ms)
+
+
+Started DELETE "/comments/8" for 127.0.0.1 at 2018-10-12 18:55:46 -0700
+Processing by CommentsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"J+/R6midIRm40kIk8ehK4cmgCaPIOcHOtnSAM2e7eYCfVOGFu+PquG5vEXxRTASGoaIrFaFBwdF7rmCLyxNOxg==", "id"=>"8"}
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:33
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/comments_controller.rb:34
+  [1m[36mComment Destroy (0.4ms)[0m  [1m[31mDELETE FROM "comments" WHERE "comments"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/comments_controller.rb:34
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/comments_controller.rb:34
+Redirected to http://localhost:3000/posts/4
+Completed 302 Found in 4ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:55:46 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (5.6ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (11.5ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (18.0ms)
+  Rendered posts/show.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 59ms (Views: 53.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 18:59:20 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/chinmaygarg/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (168.2ms)
+  Rendered posts/show.html.erb within layouts/application (234.8ms)
+Completed 500 Internal Server Error in 290ms (ActiveRecord: 3.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `xeditable?' for #<#<Class:0x00007fc692301230>:0x00007fc691452f40>
+Did you mean?  editable):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245408837100'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245416439740'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:01:56 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (4.7ms)
+  Rendered posts/show.html.erb within layouts/application (24.7ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 2.3ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/controllers/application_controller.rb:9:in `xeditable?'
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245421308480'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245408570900'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:03:54 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (4.3ms)
+  Rendered posts/show.html.erb within layouts/application (21.4ms)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 1.6ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/controllers/application_controller.rb:9:in `xeditable?'
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245415827460'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245407735560'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:04:49 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (6.0ms)
+  Rendered posts/show.html.erb within layouts/application (27.4ms)
+Completed 500 Internal Server Error in 61ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/controllers/application_controller.rb:9:in `xeditable?'
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245416033840'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245408124700'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:04:52 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (6.4ms)
+  Rendered posts/show.html.erb within layouts/application (12.2ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (wrong number of arguments (given 1, expected 0)):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/controllers/application_controller.rb:9:in `xeditable?'
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245407030680'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245419904260'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:05:03 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (142.4ms)
+  Rendered posts/show.html.erb within layouts/application (160.1ms)
+Completed 500 Internal Server Error in 183ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `xeditable?' for #<#<Class:0x00007fc691353090>:0x00007fc690ec7b98>
+Did you mean?  editable):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245408106700'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245421269420'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:05:15 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (135.8ms)
+  Rendered posts/show.html.erb within layouts/application (141.3ms)
+Completed 500 Internal Server Error in 153ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `xeditable' for #<#<Class:0x00007fc691353090>:0x00007fc692bc8cd8>
+Did you mean?  editable):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= xeditable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245407733640'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245421044480'
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:05:25 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [1 times] (135.9ms)
+  Rendered posts/show.html.erb within layouts/application (141.9ms)
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `xeditable?' for #<#<Class:0x00007fc691353090>:0x00007fc692ab6958>
+Did you mean?  editable):
+    4:   <%= link_to "Delete", comment_path(comment),
+    5:          :data => {:confirm => "Are you sure that you want to delete the comment?",
+    6:                    :method => "delete"} %> |
+    7:   <%= editable comment, :body  %>
+    8: 
+    9:   <%= form_for [comment, Comment.new] do |f| %>
+   10:       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+  
+app/views/comments/_comment.html.erb:7:in `_app_views_comments__comment_html_erb__1894445410876264914_70245420406880'
+app/views/posts/show.html.erb:21:in `_app_views_posts_show_html_erb__1318498403118918231_70245420526440'
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:06:49 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 456ms (Views: 451.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:10:55 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 47ms (Views: 42.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:10:58 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (5.5ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (12.6ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (21.0ms)
+  Rendered posts/show.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 68ms (Views: 60.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2018-10-12 19:11:01 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 41ms (Views: 34.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:12:31 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:11: syntax error, unexpected ')', expecting '='
+...buffer.append=( link_to, post );@output_buffer.safe_append='...
+...                              ^
+/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:14: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+          ^~~
+/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:18: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:20: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/posts/index.html.erb:11: syntax error, unexpected ')', expecting '='
+app/views/posts/index.html.erb:14: syntax error, unexpected keyword_end, expecting ')'
+app/views/posts/index.html.erb:18: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/posts/index.html.erb:20: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:12:39 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 34ms (Views: 30.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/%3Ca%20href=" for 127.0.0.1 at 2018-10-12 19:12:41 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/%3Ca%20href="):
+  
+actionpack (5.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.1) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.5) lib/rack/method_override.rb:22:in `call'
+rack (2.0.5) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.5) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:12:42 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 34ms (Views: 30.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:13:08 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.7ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:11: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+...link_to, show_post_path(post) );@output_buffer.safe_append='...
+...                              ^
+/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:14: syntax error, unexpected keyword_end, expecting ')'
+'.freeze; end 
+          ^~~
+/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:18: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/chinmaygarg/Dropbox/Graduate School/CS291A/TheKnights/app/views/posts/index.html.erb:20: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/posts/index.html.erb:11: syntax error, unexpected ')', expecting &. or :: or '[' or '.'
+app/views/posts/index.html.erb:14: syntax error, unexpected keyword_end, expecting ')'
+app/views/posts/index.html.erb:18: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/posts/index.html.erb:20: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:13:14 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 39ms (Views: 34.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:14:19 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 37ms (Views: 32.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:14:36 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (4.8ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"posts"}, missing required keys: [:id]):
+     8: <% @posts.each do |post| %>
+     9: <tr align="center">
+    10: 	<td style="width:50%"><%= post.title %></td>
+    11: 	<%= link_to post_path do %>
+    12: 	<td style="width:50%"><img src="<%= post.img %>" width="100px" height="100px"/></td>
+    13: 	<% end %>
+    14: 	<!-- <td style="width:50%"><%= link_to image_tag(post.img), post %> </td> -->
+  
+app/views/posts/index.html.erb:11:in `block in _app_views_posts_index_html_erb__2728838077532564036_70245462608860'
+app/views/posts/index.html.erb:8:in `_app_views_posts_index_html_erb__2728838077532564036_70245462608860'
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:14:45 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 31ms (Views: 27.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:15:01 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 31ms (Views: 28.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:15:02 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.2ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (13.9ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (18.9ms)
+  Rendered posts/show.html.erb within layouts/application (25.2ms)
+Completed 200 OK in 64ms (Views: 57.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:15:08 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.1ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (4.9ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (9.6ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (14.4ms)
+  Rendered posts/show.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 64ms (Views: 56.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-10-12 19:15:25 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  ↳ app/views/posts/index.html.erb:8
+  Rendered posts/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 34ms (Views: 30.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/posts/4" for 127.0.0.1 at 2018-10-12 19:15:26 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 4], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 6], ["commentable_type", "Comment"]]
+  ↳ app/views/comments/_comment.html.erb:14
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (5.0ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (10.2ms)
+  Rendered collection of comments/_comment.html.erb [1 times] (16.3ms)
+  Rendered posts/show.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 63ms (Views: 56.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2018-10-12 19:15:28 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 41ms (Views: 34.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/posts/5" for 127.0.0.1 at 2018-10-12 19:15:30 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."commentable_id" = ? AND "comments"."commentable_type" = ?[0m  [["commentable_id", 5], ["commentable_type", "Post"]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered collection of comments/_comment.html.erb [0 times] (0.0ms)
+  Rendered posts/show.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 49ms (Views: 41.9ms | ActiveRecord: 0.5ms)
+
+
