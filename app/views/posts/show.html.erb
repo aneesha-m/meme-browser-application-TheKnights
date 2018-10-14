@@ -1,5 +1,6 @@
 <h2><%= @post.title %></h2>
-<img src="<%= @post.img %>" width="400px" height="400px"/> 
+<img src="<%= @post.img %>" width="400px" height="400px"/> <br/>
+<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
 
 <br>
 <%= link_to 'Edit', edit_post_path(@post) %> | 

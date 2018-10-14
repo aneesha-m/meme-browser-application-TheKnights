@@ -6,17 +6,21 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @commentable.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = @commentable.comments.find(params[:id])
-
+    #@comment = @commentable.comments.find(params[:id])
+    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to @commentable, notice: "Your comment was successfully updated"
+      redirect_to @comment, notice: "Your comment was successfully updated"
     else
       render 'index'
     end
+  end
+
+  def show
+    redirect_back fallback_location: root_path
   end
 
   def create
