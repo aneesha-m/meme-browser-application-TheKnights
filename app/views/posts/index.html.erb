@@ -2,13 +2,14 @@
 <%= link_to 'New Post', new_post_path %>
 <table style="width:100%">
 	<tr>
-		<th>Title</th>
-		<th>Image</th>
+		<th></th>
+		<th></th>
 	</tr>
 <% @posts.each do |post| %>
 <tr align="center">
-	<td style="width:50%"><%= post.title %></td>
-	<td style="width:50%"><img src="<%= post.img %>" width="100px" height="100px"/> </td>
+	<td style="width:50%"><%= link_to post do %><%= post.title %><% end %></td>
+	
+	<td style="width:50%"><%= link_to post do %><img src="<%= post.img %>" width="100px" height="100px"/><% end %></td>
 </tr>
 <% end %>
 </table>
