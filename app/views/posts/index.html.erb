@@ -3,15 +3,14 @@
     <input type="submit" value="New Post" />
 </form>
 
-<p id="notice"><%= notice %></p>
-
-<% if current_user %>
-	Logged in as <%= current_user.email %>.
-	<%= link_to 'Log Out', logout_path %>
-<%else %>
-	<%= link_to 'Sign Up', signup_path %> or 
-  	<%= link_to 'Log In', login_path %>
+<% if user_signed_in? %>
+	<p>You are signed in as <%= current_user.email %> </p>
+	<p><%= link_to 'sign out', destroy_user_session_path, method: :delete %></p>
+<% else %>
+	<p>Hey, you should sign up to add posts in your name: <%= link_to 'sign up', new_user_registration_path %></p>
+	<p>Or... Sign in if you are already registered: <%= link_to 'sign in', new_user_session_path %></p> 
 <% end %>
+
 
 </center>
 
