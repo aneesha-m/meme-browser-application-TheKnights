@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
+	has_many :comments, as: :commentable
 
 	def all_tags=(names)
 		# names can look like this "cute, animal, dog"

@@ -1,6 +1,7 @@
 <h2><%= @post.title %></h2>
-<img src="<%= @post.img %>" width="400px" height="400px"/> 
-<h3>Tags: <%= @post.all_tags %></h3>
+<img src="<%= @post.img %>" width="400px" height="400px"/> <br/>
+<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
+<h4>Tags: <%= @post.all_tags %></h4>
 
 <br>
 <%= link_to 'Edit', edit_post_path(@post) %> | 
@@ -10,3 +11,14 @@
                    :method => "delete"} %>
                                    	
 </p>
+
+<h3>Comments</h3>
+
+<%= form_for [@post, Comment.new] do |f| %>
+<%= f.text_area :body, placeholder: "Add a comment" %><br/>
+<%= f.submit %>
+<% end %>
+
+<ul style="list-style-type:none">
+  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+</ul>
