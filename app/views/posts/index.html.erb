@@ -1,8 +1,5 @@
 <center><h1>Welcome to Meme Browser</h1>
-<form action="/posts/new">
-    <input type="submit" value="New Post" />
-</form>
-
+<%= link_to 'New Post', new_post_path %>
 <% if user_signed_in? %>
 	<p>You are signed in as <%= current_user.email %> </p>
 	<p><%= link_to 'sign out', destroy_user_session_path, method: :delete %></p>
@@ -10,18 +7,26 @@
 	<p>Hey, you should sign up to add posts in your name: <%= link_to 'sign up', new_user_registration_path %></p>
 	<p>Or... Sign in if you are already registered: <%= link_to 'sign in', new_user_session_path %></p> 
 <% end %>
-
-
 </center>
 
 <table style="width:100%">
 	<tr>
-		<th>Title</th>
-		<th>Image</th>
+		<th></th>
+		<th></th>
+		<th></th>
 	</tr>
 <% @posts.each do |post| %>
 <tr align="center">
-	<td style="width:50%"><%= post.title %></td>
-	<td style="width:50%"><img src="<%= post.img %>" width="100px" height="100px"/> </td>
+	<td style="width:30%"><%= link_to post do %><%= post.title %><% end %></td>
+	<td style="width:30%">Created by: 
+		<% if post.user%>
+			<%= post.user.email %>
+		<% else %>
+			anonymous
+		<% end %>
+		
+	</td>
+	<td style="width:30%"><%= link_to post do %><img src="<%= post.img %>" width="100px" height="100px"/><% end %></td>
+</tr>
 <% end %>
 </table>

@@ -6,6 +6,22 @@
 The website allows users to create posts that contain a meme (image) and a title associated with the image. [Tags support would be added in the future as well]. They will be able to like/dislike the image and comment on the images to share their viewpoint. 
 
 ## Setup Guide
+First thing that needs to be done is to clone the repository:
+```bash
+git clone https://github.com/scalableinternetservices/TheKnights.git
+```
+Alternatively you can also use Github Desktop application/zip to clone/copy the repo.<br />
+
+Once the repository has been clones you can run the following to set up the working project dir:
+```bash
+cd TheKnights
+bundle install
+rails db:migrate
+```
+If all of the above commands run successfully you should be able to start the rails server now to see the web app, you can do so using:
+```bash
+rails server
+```
 
 ## Team Members
 

@@ -1,0 +1,18 @@
+<li>
+  <%= comment.body %> -
+  <small>Submitted <%= time_ago_in_words(comment.created_at) %> ago</small>
+  <%= link_to "Delete", comment_path(comment),
+         :data => {:confirm => "Are you sure that you want to delete the comment?",
+                   :method => "delete"} %> |
+  <%= link_to "Edit", edit_comment_url(comment) %>
+
+  <%= form_for [comment, Comment.new] do |f| %>
+      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
+      <%= f.submit "Reply"  %>
+  <% end %>
+
+  <ul style="list-style-type:none">
+      <%= render partial: 'comments/comment', collection: comment.comments %>
+  </ul>
+
+</li>
