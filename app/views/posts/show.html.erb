@@ -22,3 +22,12 @@
 <ul style="list-style-type:none">
   <%= render(partial: 'comments/comment', collection: @post.comments) %>
 </ul>
+
+<%= link_to like_post_path(@post), method: :put do %>
+  Upvote
+  <%= @post.get_upvotes.size %>
+<% end %>
+<%= link_to dislike_post_path(@post), method: :put do %>
+  Downvote
+  <%= @post.get_downvotes.size %>
+<% end %>
