@@ -20,7 +20,7 @@
 	<td style="width:30%"><%= link_to post do %><%= post.title %><% end %></td>
 	<td style="width:30%">Created by: 
 		<% if post.user%>
-			<%= post.user.email %>
+      <%= post.user.email %>
 		<% else %>
       anonymous
 		<% end %>
