@@ -1,6 +1,15 @@
 <h2><%= @post.title %></h2>
 <img src="<%= @post.img %>" width="400px" height="400px"/> <br/>
-<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small>
+<small>Submitted <%= time_ago_in_words(@post.created_at) %> ago</small> <br/>
+
+<%= link_to like_post_path(@post), method: :put do %>
+  /\
+  <%= @post.get_upvotes.size - @post.get_downvotes.size%>
+<% end %>
+<%= link_to dislike_post_path(@post), method: :put do %>
+  \/
+<% end %>
+
 <h4>Tags: <%= @post.all_tags %></h4>
 
 <br>
@@ -12,7 +21,7 @@
                                    	
 </p>
 
-<h3>Comments</h3>
+<h3>Comments </h3>
 
 <%= form_for [@post, Comment.new] do |f| %>
 <%= f.text_area :body, placeholder: "Add a comment" %><br/>
@@ -23,11 +32,3 @@
   <%= render(partial: 'comments/comment', collection: @post.comments) %>
 </ul>
 
-<%= link_to like_post_path(@post), method: :put do %>
-  Upvote
-  <%= @post.get_upvotes.size %>
-<% end %>
-<%= link_to dislike_post_path(@post), method: :put do %>
-  Downvote
-  <%= @post.get_downvotes.size %>
-<% end %>
