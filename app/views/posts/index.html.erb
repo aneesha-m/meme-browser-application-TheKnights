@@ -20,25 +20,13 @@
 	<td style="width:30%"><%= link_to post do %><%= post.title %><% end %></td>
 	<td style="width:30%">Created by: 
 		<% if post.user%>
-      <%= post.user.email %>
+			<%= post.user.email %>
 		<% else %>
-      anonymous
+			anonymous
 		<% end %>
-
 		
 	</td>
 	<td style="width:30%"><%= link_to post do %><img src="<%= post.img %>" width="100px" height="100px"/><% end %></td>
-  <td>
-    <%= link_to like_post_path(post), method: :put do %>
-      /\
-      <%= post.get_upvotes.size - post.get_downvotes.size %>
-    <% end %>
-    <%= link_to dislike_post_path(post), method: :put do %>
-      \/
-    <% end %>
-  </td>
 </tr>
-
 <% end %>
 </table>
-
