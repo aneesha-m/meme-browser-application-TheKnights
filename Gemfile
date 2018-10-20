@@ -62,3 +62,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt'
 gem 'devise'
+
+#inserted to add voting feature
+gem 'acts_as_votable', '~> 0.11.1'
