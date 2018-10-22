@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show]
+  before_action :check_access, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -74,5 +75,15 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :img, :all_tags)
+    end
+
+    def check_access
+      @post = Post.find(params[:id])
+      if current_user != @post.user
+        respond_to do |format|
+          format.html { redirect_to @post, notice: 'You are not authorized to make changes to this post' }
+          format.json { render json: @post.errors, status: :unprocessable_entity}
+        end
+      end
     end
 end
