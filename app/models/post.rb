@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+	validates_presence_of :title
+	validates :img, format: { with: %r{.(gif|jpg|png)\Z}i, message: 'must be a URL for GIF, JPG or PNG image.' }
+
 	belongs_to :user, optional: true
 	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
