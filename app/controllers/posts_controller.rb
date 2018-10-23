@@ -4,10 +4,15 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = if params[:search]
-      Post.where('title LIKE ?', "%#{params[:search]}%").order('id DESC')
+    # @posts = if params[:search]
+    #   Post.where('title LIKE ?', "%#{params[:search]}%").order('id DESC')
+    # else
+    #   Post.all.order('id DESC')
+    # end
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
     else
-      Post.all.order('id DESC')
+      @posts = Post.all
     end
   end
 
@@ -77,6 +82,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :img, :all_tags, :search)
+      params.require(:post).permit(:title, :img, :all_tags, :tag)
     end
-end
+  end
