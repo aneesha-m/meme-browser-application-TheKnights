@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   root 'posts#index'
   get 'tags/:tag', to: 'posts#index', as: "tag"
 
+  get 'profile/index'
+
   resources :posts do
   	resources :comments
+    member do
+      put "like", to: "posts#upvote"
+      put "dislike", to: "posts#downvote"
+    end
   end
-
   resources :comments do
   	resources :comments
   end

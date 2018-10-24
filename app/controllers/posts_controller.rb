@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show]
+  before_action :check_access, only: [:edit, :update, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -78,6 +79,19 @@ class PostsController < ApplicationController
     end
   end
 
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+  def downvote
+    @post = Post.find(params[:id])
+    @post.downvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -88,4 +102,15 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :img, :all_tags, :tag)
     end
-  end
+
+
+    def check_access
+      @post = Post.find(params[:id])
+      if current_user != @post.user
+        respond_to do |format|
+          format.html { redirect_to @post, notice: 'You are not authorized to make changes to this post' }
+          format.json { render json: @post.errors, status: :unprocessable_entity}
+        end
+      end
+    end
+end
