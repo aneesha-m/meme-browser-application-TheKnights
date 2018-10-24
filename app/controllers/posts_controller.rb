@@ -9,8 +9,12 @@ class PostsController < ApplicationController
     # else
     #   Post.all.order('id DESC')
     # end
-    if params[:tag]
+    if params[:tag].present?
       @posts = Post.tagged_with(params[:tag])
+      if @posts.blank?
+        #@posts = Post.all
+        redirect_to root_path, notice: 'Invalid Search Tag'
+      end
     else
       @posts = Post.all
     end
