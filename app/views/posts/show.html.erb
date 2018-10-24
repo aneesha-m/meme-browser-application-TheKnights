@@ -12,7 +12,6 @@
   \/
 <% end %>
 
-<h4>Tags: <%= @post.all_tags %></h4>
 <% if user_ownes?(@post) %>
 	<%= link_to 'Edit', edit_post_path(@post) %> | 
 	<%= link_to "Delete", post_path(@post),
