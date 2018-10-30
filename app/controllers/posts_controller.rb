@@ -5,7 +5,20 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    # @posts = if params[:search]
+    #   Post.where('title LIKE ?', "%#{params[:search]}%").order('id DESC')
+    # else
+    #   Post.all.order('id DESC')
+    # end
+    if params[:tag].present?
+      @posts = Post.tagged_with(params[:tag])
+      if @posts.blank?
+        #@posts = Post.all
+        redirect_to root_path, notice: 'Invalid Search Tag'
+      end
+    else
+      @posts = Post.all
+    end
   end
 
   # GET /posts/1
@@ -87,8 +100,9 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :img, :all_tags)
+      params.require(:post).permit(:title, :img, :all_tags, :tag)
     end
+
 
     def check_access
       @post = Post.find(params[:id])
@@ -100,4 +114,3 @@ class PostsController < ApplicationController
       end
     end
 end
-

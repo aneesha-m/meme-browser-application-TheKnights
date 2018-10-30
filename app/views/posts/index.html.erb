@@ -1,4 +1,16 @@
 <center><h1>Welcome to Meme Browser</h1>
+
+<!--
+params[:search] - used for keeping the search term in the field after a search
+name: nil - used for eliminate the "commit=Search" in the URL after a search
+ -->
+<h3>Search for memes</h3>
+<%= form_tag(posts_path, method: :get) do %>
+	<%= text_field_tag :tag, params[:tag] %>
+	<%= submit_tag 'Search', name: nil %>
+<% end %>
+</br>
+
 <%= link_to 'New Post', new_post_path %>
 <% if user_signed_in? %>
 	<p>You are signed in as <%= current_user.email %> </p>

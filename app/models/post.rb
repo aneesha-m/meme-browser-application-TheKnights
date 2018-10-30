@@ -13,6 +13,7 @@ class Post < ApplicationRecord
 	def all_tags=(names)
 		# names can look like this "cute, animal, dog"
 		self.tags = names.split(',').map do |name|
+			name = name.lstrip.rstrip
 			Tag.where(name: name).first_or_create!
 		end
 	end
@@ -21,4 +22,14 @@ class Post < ApplicationRecord
 		tags.map(&:name).join(", ")
 	end
 
+
+	def self.tagged_with(name)
+		Tag.find_by_name(name)&.posts
+		# if Tag.find_by_name(name) != nil
+		# 	Tag.find_by_name(name).posts
+		# else
+  			
+  # 		end
+
+	end
 end
