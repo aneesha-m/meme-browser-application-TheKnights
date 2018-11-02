@@ -5,6 +5,13 @@
          :data => {:confirm => "Are you sure that you want to delete the comment?",
                    :method => "delete"} %> |
   <%= link_to "Edit", edit_comment_url(comment) %>
+  <%= link_to comment_like_path(comment), method: :put do %>
+    /\
+  <% end %>
+    <%= comment.get_upvotes.size - comment.get_downvotes.size%>
+  <%= link_to comment_dislike_path(comment), method: :put do %>
+    \/
+  <% end %>
 
   <%= form_for [comment, Comment.new] do |f| %>
       <%= f.text_area :body, placeholder: "Add a Reply" %><br/>

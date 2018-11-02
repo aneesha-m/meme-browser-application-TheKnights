@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
+  #before_action :upvote
 
   def new
     @comment = Comment.new
@@ -40,6 +41,18 @@ class CommentsController < ApplicationController
       format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def upvote
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+  def downvote
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable.downvote_by current_user
+    redirect_back fallback_location: root_path
   end
 
   private
