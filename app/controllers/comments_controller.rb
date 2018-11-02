@@ -12,10 +12,14 @@ class CommentsController < ApplicationController
   def update
     #@comment = @commentable.comments.find(params[:id])
     @comment = Comment.find(params[:id])
-    if @comment.update(comment_params)
-      redirect_to @comment, notice: "Your comment was successfully updated"
+    if user_ownes_comment?(@comment)
+      if @comment.update(comment_params)
+        redirect_to @comment, notice: "Your comment was successfully updated"
+      else
+        render 'index'
+      end
     else
-      render 'index'
+      redirect_back fallback_location: root_path, notice: 'You are not authorized to edit'
     end
   end
 
@@ -37,10 +41,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+    if user_ownes_comment?(@comment)
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back fallback_location: root_path, notice: 'You are not authorized to delete'
     end
   end
 
@@ -53,6 +61,12 @@ class CommentsController < ApplicationController
   def find_commentable
     @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
     @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
+  end
+
+  def check_access
+    if !user_ownes_comment?(@comment)
+      redirect_to fallback_location: root_path, notice: 'You are not authorized to make any changes'
+    end
   end
 
 end
