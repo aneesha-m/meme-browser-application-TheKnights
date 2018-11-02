@@ -13,6 +13,7 @@
          :data => {:confirm => "Are you sure that you want to delete the comment?",
                    :method => "delete"} %> |
   <%= link_to "Edit", edit_comment_url(comment) %>
+  <% end %>
   <%= link_to comment_like_path(comment), method: :put do %>
     /\
   <% end %>
