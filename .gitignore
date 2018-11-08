@@ -25,3 +25,5 @@ log/development.log
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+# Ignore Gemfile.lock
+Gemfile.lock 
