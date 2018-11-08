@@ -18,6 +18,9 @@ cd TheKnights
 bundle install
 rails db:migrate
 ```
+
+`rails db:seed` can be used to pre-populate the page for demo posts etc.
+
 If all of the above commands run successfully you should be able to start the rails server now to see the web app, you can do so using:
 ```bash
 rails server
