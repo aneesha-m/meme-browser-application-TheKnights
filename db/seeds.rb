@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Post.delete_all
+User.delete_all
+Comment.delete_all
+
+# Anonymous Posts
+
 posts_list = [
 ["Mickey Mouse", "https://i.imgflip.com/23d0p5.jpg", "mickey, mouse, disney, fox, star wars"],
 ["Willy Wonka", "https://www.dailydot.com/wp-content/uploads/e0d/d9/6bd83b6a28b3bf7da31d10f6f4fe2e2c.jpg", "willy, wonka, chocolate, great"],
@@ -19,10 +25,32 @@ posts_list.each do |title, img, tags|
 	Post.create(title: title, img: img, all_tags: tags)
 end
 
-10.times do |index|
-	Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future)
-end
+# Creating users for posts that are not anonymous
+User.create(email: "something@something.com", password: "init123")
+User.create(email: "chinmay@something.com", password: "init123")
+User.create(email: "aneesha@something.com", password: "init123")
+User.create(email: "navjot@something.com", password: "init123")
+User.create(email: "fredrick@something.com", password: "init123")
+User.create(email: "siljie@something.com", password: "init123")
+
+# Non anonymous posts
 
 10.times do |index|
-	Post.create!(title: Faker::RickAndMorty.quote, img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty)
+	Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: rand(1..6))
 end
+
+
+10.times do |index|
+	Post.create!(title: Faker::RickAndMorty.quote, img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty, user_id: rand(1..6))
+end
+
+
+
+# create comments
+100.times do |index|
+	Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..20), commentable_type: "Post", user_id: rand(1..6))
+end
+
+# 100.times do |index|
+# 	Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..100), commentable_type: "Comment", user_id: rand(1..6))
+# end
