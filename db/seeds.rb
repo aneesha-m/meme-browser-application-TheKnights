@@ -12,12 +12,17 @@ posts_list = [
 ["Old Sport", "https://www.lifewire.com/thmb/7pE__VIDaYq0OrolEZ3TBSAusbY=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/dicaprio3-583e33155f9b58d5b19e3a00.jpg", "old, sport, great, gatsby, movie"]
 ]
 
-sample_tags_list = "back, future, doc, marty, mcfly"
+sample_tags_list_back_to_future = "back, future, doc, marty, mcfly"
+sample_tags_list_rick_and_morty = "rick, morty, swifty, plumbus, shleem, c-137"
 
 posts_list.each do |title, img, tags|
 	Post.create(title: title, img: img, all_tags: tags)
 end
 
-50.times do |index|
-	Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list)
+10.times do |index|
+	Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future)
+end
+
+10.times do |index|
+	Post.create!(title: Faker::RickAndMorty.quote, img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty)
 end
