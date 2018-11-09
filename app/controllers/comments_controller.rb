@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_commentable
+  #before_action :upvote
 
   def new
     @comment = Comment.new
@@ -12,10 +13,14 @@ class CommentsController < ApplicationController
   def update
     #@comment = @commentable.comments.find(params[:id])
     @comment = Comment.find(params[:id])
-    if @comment.update(comment_params)
-      redirect_to @comment, notice: "Your comment was successfully updated"
+    if current_user == @comment.user
+      if @comment.update(comment_params)
+        redirect_to @comment, notice: "Your comment was successfully updated"
+      else
+        render 'index'
+      end
     else
-      render 'index'
+      redirect_back fallback_location: root_path, notice: 'You are not authorized to edit'
     end
   end
 
@@ -24,8 +29,10 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @commentable.comments.new comment_params
-
+    @comment = @commentable.comments.new(comment_params)
+    if user_signed_in?
+      @comment.user_id = current_user.id
+    end
     if @comment.save
       redirect_back fallback_location: root_path, notice: 'Your comment was successfully posted!'
     else
@@ -35,17 +42,33 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user == @comment.user
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path, notice: 'Comment was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_back fallback_location: root_path, notice: 'You are not authorized to delete'
     end
+  end
+
+  def upvote
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable.upvote_by current_user
+    redirect_back fallback_location: root_path
+  end
+
+  def downvote
+    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    @commentable.downvote_by current_user
+    redirect_back fallback_location: root_path
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body, :user_id)
   end
 
   def find_commentable

@@ -12,7 +12,7 @@
   \/
 <% end %>
 
-<% if user_ownes?(@post) and user_signed_in? %>
+<% if user_ownes_post?(@post) and user_signed_in? %>
 	<%= link_to 'Edit', edit_post_path(@post) %> | 
 	<%= link_to "Delete", post_path(@post),
          :data => {:confirm => "You sure?",
@@ -28,6 +28,7 @@
 <%= f.text_area :body, placeholder: "Add a comment" %><br/>
 <%= f.submit %>
 <% end %>
+
 
 <ul style="list-style-type:none">
   <%= render(partial: 'comments/comment', collection: @post.comments) %>

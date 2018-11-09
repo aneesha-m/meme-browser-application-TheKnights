@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   end
   resources :comments do
   	resources :comments
+    put "like", to: "comments#upvote"
+    put "dislike", to: "comments#downvote"
   end
 
   devise_for :users

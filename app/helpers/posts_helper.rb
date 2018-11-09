@@ -3,7 +3,7 @@ module PostsHelper
 		tags.split(",").map{|tag| link_to tag.strip, tag_path(tag.strip) }.join(", ") 
 	end
 	
-	def user_ownes?(post)
+	def user_ownes_post?(post)
 		return current_user == post.user 
 	end
 end
