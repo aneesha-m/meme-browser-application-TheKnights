@@ -1,10 +1,10 @@
 body {
-  background-color: #fff;
+  background-color: #ABCFB0;
   color: #333;
-  margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  margin: 0;
 }
 
 p, ol, ul, td {
@@ -27,8 +27,7 @@ a {
   }
 
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color: black;
   }
 }
 
@@ -82,3 +81,5 @@ div {
 label {
   display: block;
 }
+
+

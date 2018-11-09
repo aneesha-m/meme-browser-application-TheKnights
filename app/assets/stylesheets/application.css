@@ -15,3 +15,117 @@
  */
 
 
+#post-image {
+    height: 400px !important;
+    width: 400px;
+}
+
+
+/* Navigation bar */
+
+
+.site-name{
+    margin-left: 5px;
+}
+
+#signup{
+    padding-right: 10px;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    color: rgba(117,117,117 ,1);
+    box-shadow: 5px 10px 20px -20px rgba(191, 230, 196,1);
+    background-color: white;
+}
+header ul{
+    margin: 0px;
+}
+
+.meme-search{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Posts mainpage */
+
+.content-posts{
+    padding-top: 1em;
+    text-align: center;
+}
+
+h1{
+    padding-top: 1em;
+    text-align: center;
+    color: #353B3C;
+}
+
+/* CARD */
+
+.votes{
+    text-align: left;
+    padding: 1em;
+    margin-left: auto;
+}
+
+.post-skeleton{
+    display: flex;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    background-color: #F5F5F5;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-card2{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.post-card {
+    /* Add shadows to create the "card" effect */
+    width: 90%;
+    margin-left: auto;
+    background-color: white;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+    padding: 2px 16px;
+}
+
+#posted-by{
+    padding: 1em;
+}
+#post-title{
+    padding-bottom: 1em;
+    font-size: 18px;
+}
+#post-title a{
+    text-decoration: none;
+    color: #F78E69;
+}
+small{
+    color: #8A8A8A;
+}

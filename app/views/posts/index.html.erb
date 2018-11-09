@@ -1,25 +1,7 @@
-<center><h1>Welcome to Meme Browser</h1>
+<h1>Welcome to Meme Browser</h1>
+<div class="content-posts">
+  <%= link_to 'New Post', new_post_path %>
+  <%= render 'show_posts_table' %>
+</div>
 
-<!--
-params[:search] - used for keeping the search term in the field after a search
-name: nil - used for eliminate the "commit=Search" in the URL after a search
- -->
-<h3>Search for memes</h3>
-<%= form_tag(posts_path, method: :get) do %>
-	<%= text_field_tag :tag, params[:tag] %>
-	<%= submit_tag 'Search', name: nil %>
-<% end %>
-</br>
 
-<%= link_to 'New Post', new_post_path %>
-<% if user_signed_in? %>
-	<p>You are signed in as <%= current_user.email %> </p>
-	<p><%= link_to 'my posts', profile_index_path %> </p>
-	<p><%= link_to 'sign out', destroy_user_session_path, method: :delete %></p>
-<% else %>
-	<p>Hey, you should sign up to add posts in your name: <%= link_to 'sign up', new_user_registration_path %></p>
-	<p>Or... Sign in if you are already registered: <%= link_to 'sign in', new_user_session_path %></p> 
-<% end %>
-</center>
-
-<%= render 'show_posts_table' %>

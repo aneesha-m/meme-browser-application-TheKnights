@@ -10,6 +10,27 @@
   </head>
 
   <body>
+  <header>
+    <ul class="nav-menu" role="navigation">
+      <li><%=image_tag("meme-icon_small.png") %></li>
+      <li class="site-name"><p>MemeBrowser</p></li>
+      <li class="meme-search">
+        <%= form_tag(posts_path, method: :get) do %>
+          <%= text_field_tag :tag, params[:tag], placeholder: "Search for memes" %>
+          <%= submit_tag 'Search', name: nil %>
+        <% end %></li>
+
+      <% if user_signed_in? %>
+        <li>You are signed in as <%= current_user.email %> </li>
+        <li><%= link_to 'my posts', profile_index_path %> </li>
+        <li><%= link_to 'sign out', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li id="signup"><%= link_to 'sign up', new_user_registration_path %> </li>
+        <li><%= link_to 'sign in', new_user_session_path %></li>
+      <% end %>
+
+    </ul>
+  </header>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
