@@ -68,3 +68,4 @@ gem 'devise'
 
 #inserted to add voting feature
 gem 'acts_as_votable', '~> 0.11.1'
+gem 'will_paginate'

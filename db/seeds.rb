@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+50.times {|i| Post.create(title: "Post #{i + 1}", img: "https://i.imgur.com/FTBSFo7.jpg", all_tags: "post,animal")}
+5.times {|i| Post.create(title: "Post #{i + 1}", img: "https://i.imgur.com/FTBSFo7.jpg", all_tags: "post,unique")}
+15.times {|i| Post.create(title: "Post #{i + 1}", img: "https://i.imgur.com/FTBSFo7.jpg", all_tags: "post,animal,rare")}

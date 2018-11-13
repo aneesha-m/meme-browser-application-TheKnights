@@ -10,14 +10,21 @@ class PostsController < ApplicationController
     # else
     #   Post.all.order('id DESC')
     # end
+
     if params[:tag].present?
-      @posts = Post.tagged_with(params[:tag])
-      if @posts.blank?
+      @posts_tagged = Post.tagged_with(params[:tag])
+      if @posts_tagged.blank?
         #@posts = Post.all
         redirect_to root_path, notice: 'Invalid Search Tag'
+      else
+        @posts = @posts_tagged.paginate(page: params[:page], per_page: 10).order('created_at DESC')
       end
     else
-      @posts = Post.all
+      @posts = Post.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 

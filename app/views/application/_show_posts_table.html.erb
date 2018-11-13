@@ -1,21 +1,22 @@
-<table style="width:100%">
+
+
+<div class="controls">
+	<center>
+		<%= will_paginate %>
+	</center>
+</div>
+
+<table id="my-posts" style="width:100%">
 	<tr>
 		<th></th>
 		<th></th>
 		<th></th>
 	</tr>
-<% @posts.each do |post| %>
-<tr align="center">
-	<td style="width:30%"><%= link_to post do %><%= post.title %><% end %></td>
-	<td style="width:30%">Created by: 
-		<% if post.user%>
-			<%= post.user.email %>
-		<% else %>
-			anonymous
-		<% end %>
-		
-	</td>
-	<td style="width:30%"><%= link_to post do %><img src="<%= post.img %>" width="100px" height="100px"/><% end %></td>
-</tr>
-<% end %>
+	<%= render @posts %>
 </table>
+
+<div class="controls">
+	<center>
+		<%= will_paginate %>
+	</center>
+</div>
