@@ -27,3 +27,5 @@ log/development.log
 !.elasticbeanstalk/*.global.yml
 #ignore Gemfile.lock
 Gemfile.lock
+#ignore all the useless OSX files
+**/*.DS_Store
