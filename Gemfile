@@ -71,5 +71,5 @@ gem 'acts_as_votable', '~> 0.11.1'
 gem 'will_paginate'
 
 #added faker to fake some data since I'm too lazy to do everything manually
-gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'faker'
 
