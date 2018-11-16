@@ -1,4 +1,8 @@
-<h1>Add Post</h1>
+<div class="addpost-wrap">
+  <div id="cross"><%=link_to image_tag("cancel.png"), root_path %></div>
+
+  <h2>Add Post</h2>
+
 <%= form_for :post, url: posts_path do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
@@ -11,22 +15,24 @@
       </ul>
     </div>
   <% end %>
-	<p>
-		<%= f.label :title %><br>
-		<%= f.text_field :title %>
-	</p>
 
-	<p>
-		<%= f.label :img %><br>
-		<%= f.text_field :img %>
-	</p>
+    <div class="addpost-form">
+      <p>
+        <%= f.text_field :title, :id=> "title", :placeholder=> "Title"%>
+      </p>
 
-	<p>
-		<%= f.label :all_tags %><br>
-		<%= f.text_field :all_tags %>
-	</p>
+      <p>
+        <%= f.text_field :img, :id=> "image", :placeholder=> "Image URL" %>
+      </p>
 
-	<p>
-		<%= f.submit %>
-	</p>
+      <p>
+        <%= f.text_field :all_tags, :id=> "tags", :placeholder=> "All tags" %>
+      </p>
+
+      <p>
+          <%= f.submit :id=> "submit" %>
+      </p>
 <% end %>
+
+  </div>
+</div>

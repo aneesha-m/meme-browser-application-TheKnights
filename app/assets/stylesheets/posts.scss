@@ -1,3 +1,146 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+// New post box
+
+* { box-sizing: border-box; margin: 0; padding:0; }
+
+html {
+
+  .addpost-wrap {
+    position: relative;
+    margin: 0 auto;
+    background: #F5F5F5;
+    width: 350px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px #333;
+    padding: 15px;
+    margin-top: 100px;
+
+    #cross{
+      text-align: end;
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 200;
+      font-size: 2em;
+      margin-top: 10px;
+      color: #34495e;
+    }
+
+    .addpost-form {
+      padding-top: 20px;
+
+      input[type="title"],
+      input[type="img"],
+      button {
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 25px;
+        height: 40px;
+        border-radius: 5px;
+        outline: 0;
+        -moz-outline-style: none;
+      }
+
+      p #title, #image, #tags{
+        border: 1px solid #bbb;
+        padding: 0 0 0 10px;
+        font-size: 14px;
+        &:focus {
+          border: 1px solid #3498db;
+        }
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 25px;
+        height: 40px;
+        border-radius: 5px;
+        outline: 0;
+        -moz-outline-style: none;
+      }
+
+
+      input[type="title"],
+      input[type="img"] {
+        border: 1px solid #bbb;
+        padding: 0 0 0 10px;
+        font-size: 14px;
+        &:focus {
+          border: 1px solid #3498db;
+        }
+      }
+
+      a {
+        text-align: center;
+        font-size: 10px;
+        color: #3498db;
+
+        p{
+          padding-bottom: 10px;
+        }
+
+      }
+
+      #submit {
+        background-color: #F78E69;
+        border:none;
+        color: white;
+        font-size: 18px;
+        font-weight: 200;
+        cursor: pointer;
+        transition: box-shadow .4s ease;
+
+        width: 80%;
+        margin-left: 10%;
+        margin-bottom: 25px;
+        height: 40px;
+        border-radius: 5px;
+        outline: 0;
+        -moz-outline-style: none;
+
+        &:hover {
+          box-shadow: 1px 1px 5px #555;
+        }
+
+        &:active {
+          box-shadow: 1px 1px 7px #222;
+        }
+
+      }
+
+    }
+
+    &:after{
+      content:'';
+      position:absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background:-webkit-linear-gradient(left,
+              #E8D6CB 0%, #E8D6CB 20%,
+              #D0ADA7 20%, #D0ADA7 40%,
+              #AD6A6C 40%, #AD6A6C 60%,
+              #5D2E46 60%, #5D2E46 80%,
+              #B58DB6 80%, #B58DB6 100%
+      );
+      background:-moz-linear-gradient(left,
+              #E8D6CB 0%, #E8D6CB 20%,
+              #D0ADA7 20%, #D0ADA7 40%,
+              #AD6A6C 40%, #AD6A6C 60%,
+              #5D2E46 60%, #5D2E46 80%,
+              #B58DB6 80%, #B58DB6 100%
+      );
+      height: 5px;
+      border-radius: 5px 5px 0 0;
+    }
+
+  }
+
+}
+
+
+// Show post

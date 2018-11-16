@@ -28,8 +28,15 @@
     margin-left: 5px;
 }
 
-#signup{
-    padding-right: 10px;
+#signup, #signup a{
+    padding-right: 5px;
+    text-decoration: none;
+}
+
+#signin, #signin a{
+    margin-right: 5px;
+    text-decoration: none;
+
 }
 
 ul {
@@ -54,6 +61,35 @@ header ul{
     margin-right: auto;
 }
 
+#searchField{
+    border: 1px solid #bbb;
+    padding: 0 0 0 10px;
+    font-size: 12px;
+    height: 20px;
+    border-radius: 5px;
+    outline: 0;
+    -moz-outline-style: none;
+    margin-right: -20px;
+    padding-right: 20px;
+}
+#searchBtn{
+    background-color: #F78E69;
+    border:none;
+    color: white;
+    font-size: 12px;
+    font-weight: 200;
+    cursor: pointer;
+    transition: box-shadow .4s ease;
+    width: 60px;
+    height: 20px;
+    outline: 0;
+    -moz-outline-style: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+
+
+}
+
 /* Posts mainpage */
 
 .content-posts{
@@ -61,10 +97,33 @@ header ul{
     text-align: center;
 }
 
-h1{
-    padding-top: 1em;
+.welcome{
+    padding-top: 2em;
+    align-content: center;
+    justify-content: center;
     text-align: center;
     color: #353B3C;
+}
+.welcome a{
+    display: inline-block;
+    padding: 7px 11px;
+    color: #FFF;
+    border: 1px solid #FFF;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 120%;
+    background-color: rgba(255,255,255, 0);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-transition: background-color 300ms ease;
+    -moz-transition: background-color 300ms ease;
+    transition: background-color 300ms ease;
+    cursor: pointer;
+}
+.welcome a:hover {
+    background-color: rgba(255,255,255, 0.3);
+    color: #FFF;
 }
 
 /* CARD */
@@ -74,6 +133,17 @@ h1{
     padding: 1em;
     margin-left: auto;
 }
+
+.votes a {
+    text-decoration: none;
+}
+
+#vote-number {
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: 4px;
+}
+
 
 .post-skeleton{
     display: flex;
