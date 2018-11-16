@@ -3,7 +3,7 @@
 
 ## Description
 
-The website allows users to create posts that contain a meme (image) and a title associated with the image. [Tags support would be added in the future as well]. They will be able to like/dislike the image and comment on the images to share their viewpoint. 
+The website allows users to create posts that contain a meme (image) and a title associated with the image. Users can also search based on tags on the image. They will be able to like/dislike the image and comment on the images to share their viewpoint. And individual comments can also have their own comments to reflect opinion on a comment.
 
 ## Setup Guide
 First thing that needs to be done is to clone the repository:

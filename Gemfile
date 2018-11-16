@@ -72,4 +72,3 @@ gem 'will_paginate'
 
 #added faker to fake some data since I'm too lazy to do everything manually
 gem 'faker'
-
