@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="TheKnights-chinmay.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="1" unit="minute">
+      <users arrivalrate="1000" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="10" unit="minute">
+      <users arrivalrate="2000" unit="second"></users>
+    </arrivalphase>
+  </load>
+ 
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="http-example" probability="50" type="ts_http">
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+    </session>
+    <session name="http-example-2" probability="50" type="ts_http">
+    <transaction name="sign_up">
+      <request>
+        <http url="/posts" method="POST" version="1.1" contents="post[title]=new post2&amp;post[img]=https://i.kym-cdn.com/entries/icons/facebook/000/019/746/1427820103132.jpg&amp;post[all_tags]=magicccc&amp;commit=Save Post" content_type="application/x-www-form-urlencoded" />
+      </request>
+    </transaction>
+    </session>
+  </sessions>
+</tsung>
+

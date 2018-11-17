@@ -29,3 +29,5 @@ log/development.log
 Gemfile.lock
 #ignore all the useless OSX files
 **/*.DS_Store
+#ignore the log files from tsung
+load_test/2018*/*
