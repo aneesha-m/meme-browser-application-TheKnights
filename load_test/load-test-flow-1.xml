@@ -15,7 +15,7 @@
 
   <load>
     <arrivalphase phase="1" duration="2" unit="minute">
-      <users arrivalrate="100" unit="second"></users>
+      <users arrivalrate="10" unit="second"></users>
     </arrivalphase>
   </load>
 
@@ -38,6 +38,11 @@
       <transaction name="sign_up_user">
         <request subst="true">
           <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Sign up' />
+        </request>
+      </transaction>
+      <transaction>
+        <request>
+          <http url="/users" />
         </request>
       </transaction>
       <transaction name="post_something">
