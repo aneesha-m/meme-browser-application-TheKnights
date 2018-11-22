@@ -1,34 +1,42 @@
-<li>
-  <%= comment.body %> -
-  <small>by 
-    <% if comment.user.nil? %>
-      anonymous
-    <% else %>
-      <%= comment.user.email %>
+<div class="post-skeleton" id="comment-content">
+
+  <div class="votes">
+    <%= link_to comment_like_path(comment), method: :put do %>
+      <%=image_tag("up.png") %>
     <% end %>
-    , <%= time_ago_in_words(comment.created_at) %> ago</small>
-
-    <% if user_signed_in? and current_user == comment.user%>
-  <%= link_to "Delete", comment_path(comment),
-         :data => {:confirm => "Are you sure that you want to delete the comment?",
-                   :method => "delete"} %> |
-  <%= link_to "Edit", edit_comment_url(comment) %>
-  <% end %>
-  <%= link_to comment_like_path(comment), method: :put do %>
-    /\
-  <% end %>
     <%= comment.get_upvotes.size - comment.get_downvotes.size%>
-  <%= link_to comment_dislike_path(comment), method: :put do %>
-    \/
-  <% end %>
+    <%= link_to comment_dislike_path(comment), method: :put do %>
+      <%=image_tag("down.png") %>
+    <% end %>
+  </div>
 
-  <%= form_for [comment, Comment.new] do |f| %>
-      <%= f.text_area :body, placeholder: "Add a Reply" %><br/>
-      <%= f.submit "Reply"  %>
-  <% end %>
+  <div class="post-card" id="comment-bicontent">
+    <li>
+      <small>by
+        <% if comment.user.nil? %>
+          anonymous
+        <% else %>
+          <%= comment.user.email %>
+        <% end %>
+        , <%= time_ago_in_words(comment.created_at) %> ago</small><br>
 
-  <ul style="list-style-type:none">
-      <%= render partial: 'comments/comment', collection: comment.comments %>
-  </ul>
+      <%= comment.body %> -
+        <% if user_signed_in? and current_user == comment.user%>
+      <%= link_to "Delete", comment_path(comment),
+             :data => {:confirm => "Are you sure that you want to delete the comment?",
+                       :method => "delete"} %> |
+      <%= link_to "Edit", edit_comment_url(comment) %>
+      <% end %>
 
-</li>
+      <%= form_for [comment, Comment.new] do |f| %>
+          <%= f.text_area :body, placeholder: "Add a Reply", :id=>"reply-content" %><br/>
+          <%= f.submit "Reply"  %>
+      <% end %>
+
+      <ul style="list-style-type:none">
+          <%= render partial: 'comments/comment', collection: comment.comments %>
+      </ul>
+
+    </li>
+  </div>
+</div>

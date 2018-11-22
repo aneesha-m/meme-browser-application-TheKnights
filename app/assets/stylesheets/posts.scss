@@ -10,19 +10,19 @@
 
 html {
 
+  #cross{
+    text-align: end;
+  }
+
   .addpost-wrap {
     position: relative;
     margin: 0 auto;
     background: #F5F5F5;
     width: 350px;
     border-radius: 5px;
-    box-shadow: 3px 3px 10px #333;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 15px;
     margin-top: 100px;
-
-    #cross{
-      text-align: end;
-    }
 
     h2 {
       text-align: center;
@@ -35,17 +35,6 @@ html {
     .addpost-form {
       padding-top: 20px;
 
-      input[type="title"],
-      input[type="img"],
-      button {
-        width: 80%;
-        margin-left: 10%;
-        margin-bottom: 25px;
-        height: 40px;
-        border-radius: 5px;
-        outline: 0;
-        -moz-outline-style: none;
-      }
 
       p #title, #image, #tags{
         border: 1px solid #bbb;
@@ -61,17 +50,6 @@ html {
         border-radius: 5px;
         outline: 0;
         -moz-outline-style: none;
-      }
-
-
-      input[type="title"],
-      input[type="img"] {
-        border: 1px solid #bbb;
-        padding: 0 0 0 10px;
-        font-size: 14px;
-        &:focus {
-          border: 1px solid #3498db;
-        }
       }
 
       a {
@@ -142,5 +120,39 @@ html {
 
 }
 
-
 // Show post
+#cancel{
+  text-align: end;
+  margin-bottom: -25px;
+  padding-right: 10px;
+  padding-top: 10px;
+}
+
+#comment-bicontent{
+  padding: 10px;
+}
+
+#reply-content{
+  border: 1px solid #bbb;
+  padding: 0 0 0 10px;
+  font-size: 14px;
+  &:focus {
+    border: 1px solid #3498db;
+  }
+  width: 100%;
+  height: 40px;
+  outline: 0;
+  -moz-outline-style: none;
+}
+#comment-content{
+  border-bottom: 1px solid lightgrey;
+  border-top: 1px lightgrey;
+}
+
+#tags{
+  padding: 5px;
+}
+
+#tags a{
+  display: inline;
+}
