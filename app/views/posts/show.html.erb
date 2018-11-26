@@ -23,15 +23,18 @@
       </div>
       <div id="post-title"><%= link_to @post do %><%= @post.title %><% end %></div>
       <div><%= link_to @post do %><img src="<%= @post.img %>" width="100%" height="100%"/><% end %></div>
-      <div id="tags"><small>Tags: <%= raw tag_links(@post.all_tags) %></small></div>
+      <%if !@post.taggings.empty?%>
+        <div id="tags"><small>Tags: <%= raw tag_links(@post.all_tags) %></small></div>
+      <%end %>
     </div>
   </div>
 
 <% if user_ownes_post?(@post) and user_signed_in? %>
-	<%= link_to 'Edit', edit_post_path(@post) %> |
+	<%= link_to 'Edit', edit_post_path(@post) %>|
 	<%= link_to "Delete", post_path(@post),
-         :data => {:confirm => "You sure?",
-                   :method => "delete"} %>
+         :data => {:confirm => "Is this what you want?",
+                   :method => "delete"}
+  %>
 <% end %>
 <p>
 	<%= link_to 'Back', root_path %>

@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       @posts = Post.tagged_with(params[:tag])
       if @posts.blank?
         #@posts = Post.all
-        redirect_to root_path, notice: 'Invalid Search Tag'
+        redirect_to root_path, alert: 'Invalid Search Tag'
       end
     else
       @posts = Post.all
