@@ -72,8 +72,12 @@ class CommentsController < ApplicationController
   end
 
   def find_commentable
-    @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
-    @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
+    if stale?(Comment.all)
+      @commentable = Comment.find_by_id(params[:comment_id]) if params[:comment_id]
+    end
+    if stale?(Comment.all)
+      @commentable = Post.find_by_id(params[:post_id]) if params[:post_id]
+    end
   end
 
 end
