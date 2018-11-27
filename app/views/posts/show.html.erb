@@ -1,9 +1,14 @@
 <div class="content-posts">
   <div class="post-skeleton">
-    <div class="votes">
+
+    <div class=<%= user_signed_in? ? "votes" : "votes-not-signed-in" %>>
+
       <%= link_to like_post_path(@post), method: :put do %>
         <%=image_tag("up.png") %>
         <p id="vote-number"><%= @post.get_upvotes.size - @post.get_downvotes.size%></p>
+        <%if !user_signed_in? %>
+          <span class="tooltiptext">Sign up/login to vote!!</span>
+        <%end %>
       <% end %>
       <%= link_to dislike_post_path(@post), method: :put do %>
         <%=image_tag("down.png") %>
@@ -36,6 +41,7 @@
                   :data => {:confirm => "Is this what you want?",
                             :method => "delete"}
       %>
+      <br>
       <br>
     <% end %>
   </div>

@@ -1,0 +1,31 @@
+
+
+
+<div class="addpost-wrap">
+  <div id="cross"><%=link_to image_tag("cancel.png"), root_path %></div>
+
+  <h2>Log in</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
+    <div class="addpost-form">
+        <p><%= f.email_field :email, :id=> "title", autofocus: true, :placeholder=> "Email", autocomplete: "email" %></p>
+        <p><%= f.password_field :password, :id=> "image", :placeholder=> "Password", autocomplete: "current-password" %></p>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="field">
+          <%= f.check_box :remember_me, :id=>"checkbox"%>
+          <%= f.label :remember_me %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <p><%= f.submit "Log in", :id=> "submit" %></p>
+      </div>
+  <% end %>
+
+  </div>
+  <%= render "devise/shared/links" %>
+
+</div>

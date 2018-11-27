@@ -1,3 +1,4 @@
+=begin
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -11,12 +12,12 @@ Comment.delete_all
 
 # Anonymous Posts
 
-posts_list = [
-["Mickey Mouse", "https://i.imgflip.com/23d0p5.jpg", "mickey, mouse, disney, fox, star wars"],
-["Willy Wonka", "https://www.dailydot.com/wp-content/uploads/e0d/d9/6bd83b6a28b3bf7da31d10f6f4fe2e2c.jpg", "willy, wonka, chocolate, great"],
-["Aliens?", "https://steemitimages.com/0x0/http://cnnphilippines.com/incoming/zgzt53-aliens.jpg/ALTERNATES/FREE_720/aliens.jpg", "aliens, very, are, stupid, history, channel"],
-["Old Sport", "https://www.lifewire.com/thmb/7pE__VIDaYq0OrolEZ3TBSAusbY=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/dicaprio3-583e33155f9b58d5b19e3a00.jpg", "old, sport, great, gatsby, movie"]
-]
+#posts_list = [
+#["Mickey Mouse", "https://i.imgflip.com/23d0p5.jpg", "mickey, mouse, disney, fox, star wars"],
+#["Willy Wonka", "https://www.dailydot.com/wp-content/uploads/e0d/d9/6bd83b6a28b3bf7da31d10f6f4fe2e2c.jpg", "willy, wonka, chocolate, great"],
+#["Aliens?", "https://steemitimages.com/0x0/http://cnnphilippines.com/incoming/zgzt53-aliens.jpg/ALTERNATES/FREE_720/aliens.jpg", "aliens, very, are, stupid, history, channel"],
+#["Old Sport", "https://www.lifewire.com/thmb/7pE__VIDaYq0OrolEZ3TBSAusbY=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/dicaprio3-583e33155f9b58d5b19e3a00.jpg", "old, sport, great, gatsby, movie"]
+#]
 
 sample_tags_list_back_to_future = "back, future, doc, marty, mcfly"
 sample_tags_list_rick_and_morty = "rick, morty, swifty, plumbus, shleem, c-137"
@@ -58,3 +59,4 @@ end
 # 100.times do |index|
 # 	Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..100), commentable_type: "Comment", user_id: rand(1..6))
 # end
+=end
