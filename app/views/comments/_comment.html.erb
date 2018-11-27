@@ -28,7 +28,7 @@
   <% end %>
 
   <ul style="list-style-type:none">
-      <%= render partial: 'comments/comment', collection: comment.comments %>
+      <%= render partial: 'comments/comment', collection: comment.comments, cached: true %>
   </ul>
 
 </li>
