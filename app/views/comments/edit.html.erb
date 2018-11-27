@@ -1,6 +1,6 @@
 <h1>Editing Comment</h1>
 
-<%= render 'form', comment: @comment %>
+<%= render 'form', comment: @comment, cached: true%>
 
 <%= link_to 'Show Post', @comment.post %> |
 <%= link_to 'Back to Frontpage', posts_path %>
