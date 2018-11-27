@@ -41,8 +41,11 @@
         </request>
       </transaction>
       <transaction name="go_to_post">
-        <request>
-
+        <setdynvars sourcetype="random_number" start="0" end="50">
+            <var name="rndint" />
+        </setdynvars>
+        <request subst="true">
+          <http url="/posts/%%_rndint%%" method="GET" version="1.1" />
         </request>
       </transaction>
       <transaction name="up_down_vote_post">
