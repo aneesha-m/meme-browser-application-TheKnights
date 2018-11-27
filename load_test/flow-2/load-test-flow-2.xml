@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="theknights-dev.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="2" unit="minute">
+      <users arrivalrate="10" unit="second"></users>
+    </arrivalphase>
+  </load>
+
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="flow_2" probability="100" type="ts_http">
+      <transaction name="get_root">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_in_user">
+        <request subst="true">
+          <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Sign in' />
+        </request>
+      </transaction>
+      <transaction name="go_to_post">
+        <request>
+
+        </request>
+      </transaction>
+      <transaction name="up_down_vote_post">
+        <request>
+
+        </request>
+      </transaction>
+      <transaction name="comment_on_post">
+        <request>
+
+        </request>
+      </transaction>
+      <transaction name="come_back_to_homepage">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_out_user">
+        <request>
+
+        </request>
+      </transaction>
+    </session>
+  </sessions>
+</tsung>
+
