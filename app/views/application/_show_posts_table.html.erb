@@ -12,7 +12,9 @@
 		<th></th>
 		<th></th>
 	</tr>
+  <% cache @posts do %>
 	<%= render @posts %>
+  <% end %>
 </table>
 
 <div class="controls">
