@@ -98,8 +98,45 @@
     </session>
 
 
-    <session name="flow_3" probability="10" type="ts_http">
-     
+  <session name="flow_3" probability="10" type="ts_http">
+      <transaction name="get_root">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_in_user">
+        <request>
+          <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Log in' />
+        </request>
+      </transaction>
+
+      <transaction name="go_to_own_posts">
+        <request>
+          <http url="/profile/index" method="GET" version="1.1" />
+        </request>
+      </transaction>
+
+      <transaction name="go_to_post">
+        <request>
+          <http url="/posts/6" method="GET" version="1.1" />
+        </request>
+      </transaction>
+
+      <transaction name="edit_post">
+        <request>
+          <http url="/posts/6/edit" method="GET" version="1.1" />
+        </request>
+        <request subst="true">
+          <http url="/posts/6" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='post[all_tags]="ricky+shorty+shorty"&amp;post[img]=https://i.imgflip.com/rpvvq.jpg"&amp;post[title]="Yo+what+up+mannn"&amp;commit=Update+Post' />
+        </request>
+      </transaction>
+
+      <transaction name="sign_out_user">
+        <thinktime value="30" random="false"></thinktime>
+        <request>
+          <http url="/users/sign_out" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='commit=Sign out'/>
+        </request>
+      </transaction>
     </session>
 
 
