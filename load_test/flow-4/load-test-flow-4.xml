@@ -29,24 +29,20 @@
   </options>
 
   <sessions>
-    <session name="flow_1" probability="100" type="ts_http">
-      <transaction name="browse_pages">
-        <request>
-          <http url='/' version='1.1' method='GET'></http>
-        </request>
-        <request>
-          <http url='/' version='1.1' method='GET'></http>
-        </request>
-        <request>
-          <http url='/?page=2' version='1.1' method='GET'></http>
-        </request>
-        <request>
-          <http url='/?page=3' version='1.1' method='GET'></http>
-        </request>
-        <request>
-          <http url='/' version='1.1' method='GET'></http>
-        </request>
-      </transaction>
+    <session name="flow_4" probability="100" type="ts_http">
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="30" random="true"></thinktime>
+      <request>
+        <http url='/?page=2' version='1.1' method='GET'></http>
+      </request>
+      <request>
+        <http url='/?page=3' version='1.1' method='GET'></http>
+      </request>
+      <request>
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
     </session>
   </sessions>
 </tsung>
