@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show]
   before_action :check_access, only: [:edit, :update, :destroy]
-
+  respond_to :json
   # GET /posts
   # GET /posts.json
   def index
@@ -57,7 +57,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: "successfully created post" }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
