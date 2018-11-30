@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!DOCTYPE tsung SYSTEM "/usr/local/share/tsung/tsung-1.0.dtd" [] >
+<tsung loglevel="notice">
+
+  <!-- Client side setup -->
+  <clients>
+    <client host="localhost" use_controller_vm="true" maxusers='15000'/>
+  </clients>
+
+  <!-- Server side setup -->
+  <servers>
+    <server host="NAME.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
+  </servers>
+
+
+  <load>
+    <arrivalphase phase="1" duration="2" unit="minute">
+      <users arrivalrate="10" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="2" duration="2" unit="minute">
+      <users arrivalrate="30" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="3" duration="1" unit="minute">
+      <users arrivalrate="50" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="1" unit="minute">
+      <users arrivalrate="70" unit="second"></users>
+    </arrivalphase>
+  </load>
+ 
+  <options>
+    <!-- Set connection timeout to 2 seconds -->
+    <option name="global_ack_timeout" value="2000"></option>
+    <option type="ts_http" name="user_agent">
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+    </option>
+  </options>
+
+  <sessions>
+    <session name="flow_1" probability="10" type="ts_http">
+      <transaction name="get_root">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_up_user">
+        <request subst="true">
+          <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Sign up' />
+        </request>
+      </transaction>
+      <transaction name="make_a_post">
+        <request>
+          <http url="/posts" method="POST" version="1.1" content_type='application/json' contents='{&quot;title&quot;: &quot;alex&quot;, &quot;img&quot;: &quot;https://www.w3schools.com/w3css/img_lights.jpg&quot;}' />
+        </request>
+      </transaction>
+      <transaction name="come_back_to_homepage">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+    </session>
+
+
+    <session name="flow_2" probability="15" type="ts_http">
+      <setdynvars sourcetype="random_number" start="0" end="50">
+            <var name="rndint" />
+        </setdynvars>
+      <transaction name="get_root">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_in_user">
+        <request subst="true">
+          <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Log in' />
+        </request>
+      </transaction>
+      <transaction name="go_to_post">
+        <request subst="true">
+          <http url="/posts/%%_rndint%%" method="GET" version="1.1" />
+        </request>
+      </transaction>
+      <transaction name="up_down_vote_post">
+        <request>
+          <http url="/posts/%%_rndint%%/like" method="POST" version="1.1" />
+        </request>
+      </transaction>
+      <transaction name="comment_on_post">
+        <request>
+          <http url="/posts/%%_rndint%%/comment" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents="{&quot;body&quot;: &quot;This is epic&quot;}" />
+        </request>
+      </transaction>
+      <transaction name="come_back_to_homepage">
+        <request>
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_out_user">
+        <request>
+          <http url="/users/sign_out" method="GET" version="1.1" />
+        </request>
+      </transaction>
+    </session>
+
+
+    <session name="flow_3" probability="10" type="ts_http">
+     
+    </session>
+
+
+    <session name="flow_4" probability="40" type="ts_http">
+     
+    </session>
+
+
+    <session name="flow_5" probability="25" type="ts_http">
+     
+    </session>
+  </sessions>
+</tsung>
+
