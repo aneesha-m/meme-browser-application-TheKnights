@@ -12,6 +12,7 @@ module PostsHelper
   end
 
   def cache_key_for_posts_table
+    # this needs to be checked posts_table or show_posts_table
     ("posts_table/#{Post.maximum(:updated_at)}/"
     + Comment.maximum(:updated_at).to_s)
   end
