@@ -10,4 +10,9 @@ module PostsHelper
   def cache_key_for_post(post)
     "post/#{post.id}/#{post.updated_at}"
   end
+
+  def cache_key_for_posts_table
+    ("posts_table/#{Post.maximum(:updated_at)}/"
+    + Comment.maximum(:updated_at).to_s)
+  end
 end

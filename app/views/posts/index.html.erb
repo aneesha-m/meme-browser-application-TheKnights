@@ -5,6 +5,9 @@ params[:search] - used for keeping the search term in the field after a search
 name: nil - used for eliminate the "commit=Search" in the URL after a search
  -->
 <h3>Search for memes</h3>
+
+<% cache(cache_key_for_posts_table) do %>
+
 <%= form_tag(posts_path, method: :get) do %>
 
 	<%= text_field_tag :tag, params[:tag], autofocus: true, :required => 'required' %>
@@ -24,3 +27,5 @@ name: nil - used for eliminate the "commit=Search" in the URL after a search
 </center>
 
 <%= render 'show_posts_table', cached: true%>
+
+<% end %>
