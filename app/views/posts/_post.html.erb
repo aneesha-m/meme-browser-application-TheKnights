@@ -1,3 +1,4 @@
+<% cache(cache_key_for_post(post)) do %>
 <tr align="center">
 	<td style="width:30%"><%= link_to post do %><%= post.title %><% end %></td>
 	<td style="width:30%">Created by: 
@@ -10,3 +11,5 @@
 	</td>
 	<td style="width:30%"><%= link_to post do %><img src="<%= post.img %>" width="100px" height="100px"/><% end %></td>
 </tr>
+
+<% end %>

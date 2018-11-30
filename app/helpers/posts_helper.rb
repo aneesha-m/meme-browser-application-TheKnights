@@ -6,4 +6,8 @@ module PostsHelper
 	def user_ownes_post?(post)
 		return current_user == post.user 
 	end
+
+  def cache_key_for_post(post)
+    "post/#{post.id}/#{post.updated_at}"
+  end
 end
