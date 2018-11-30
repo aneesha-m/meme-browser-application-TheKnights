@@ -24,7 +24,7 @@
     <option name="global_ack_timeout" value="2000"></option>
 
     <option type="ts_http" name="user_agent">
-      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; en-EN; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
     </option>
   </options>
 
@@ -35,12 +35,10 @@
           <http url='/' version='1.1' method='GET'></http>
         </request>
       </transaction>
-      <transaction name="sign_in_user">
+      <transaction name="signed_in_user">
         <request subst="true">
           <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Sign in' />
         </request>
-      </transaction>
-      <transaction name="go_to_own_posts">
         <request>
 
         </request>
