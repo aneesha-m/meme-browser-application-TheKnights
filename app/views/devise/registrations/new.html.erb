@@ -1,29 +1,28 @@
-<h2>Sign up</h2>
+<div class="addpost-wrap">
+  <div id="cross"><%=link_to image_tag("cancel.png"), root_path %></div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+  <h2>Sign up</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+
+    <div class="addpost-form">
+      <p><%= f.email_field :email, :id=> "title", autofocus: true, :placeholder=> "Email", autocomplete: "email" %></p>
+
+      <% if @minimum_password_length %>
+        <em id="password_length">(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <p><%= f.password_field :password, :id=> "image", :placeholder=> "Password", autocomplete: "new-password" %></p>
+
+      <p><%= f.password_field :password_confirmation, :id=> "tags", :placeholder=>"Confirm password", autocomplete: "new-password" %></p>
+
+      <div class="actions">
+        <p><%= f.submit "Sign up", :id=> "submit" %></p>
+      </div>
+  <% end %>
+
   </div>
+  <%= render "devise/shared/links" %>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
