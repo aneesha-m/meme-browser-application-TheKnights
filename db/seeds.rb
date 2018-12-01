@@ -48,7 +48,6 @@ end
 end
 
 
-
 # create comments
 50.times do |index|
   Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..16), commentable_type: "Post", user_id: rand(1..6))
