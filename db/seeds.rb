@@ -51,11 +51,11 @@ end
 
 # create comments
 50.times do |index|
-  Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..24), commentable_type: "Post", user_id: rand(1..6))
+  Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..16), commentable_type: "Post", user_id: rand(1..6))
 end
 
 50.times do |index|
-  Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..24), commentable_type: "Post", user_id: rand(1..6))
+  Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..16), commentable_type: "Post", user_id: rand(1..6))
 end
 
 # 100.times do |index|
