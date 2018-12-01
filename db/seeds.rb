@@ -23,7 +23,7 @@ sample_tags_list_back_to_future = "back, future, doc, marty, mcfly"
 sample_tags_list_rick_and_morty = "rick, morty, swifty, plumbus, shleem, c-137"
 
 posts_list.each do |title, img, tags|
-	Post.create(title: title, img: img, all_tags: tags)
+  Post.create(title: title, img: img, all_tags: tags)
 end
 
 # Creating users for posts that are not anonymous
@@ -35,27 +35,29 @@ User.create(email: "fredrick@something.com", password: "init123")
 User.create(email: "siljie@something.com", password: "init123")
 
 # Non anonymous posts
+Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
+Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
 
-10.times do |index|
-	Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: rand(1..6))
+8.times do |index|
+  Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: rand(1..6))
 end
 
 
-10.times do |index|
-	Post.create!(title: Faker::RickAndMorty.quote, img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty, user_id: rand(1..6))
+8.times do |index|
+  Post.create!(title: Faker::RickAndMorty.quote, img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty, user_id: rand(1..6))
 end
 
 
 
 # create comments
 50.times do |index|
-	Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..24), commentable_type: "Post", user_id: rand(1..6))
+  Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..24), commentable_type: "Post", user_id: rand(1..6))
 end
 
 50.times do |index|
-	Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..24), commentable_type: "Post", user_id: rand(1..6))
+  Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..24), commentable_type: "Post", user_id: rand(1..6))
 end
 
 # 100.times do |index|
-# 	Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..100), commentable_type: "Comment", user_id: rand(1..6))
+#   Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..100), commentable_type: "Comment", user_id: rand(1..6))
 # end
