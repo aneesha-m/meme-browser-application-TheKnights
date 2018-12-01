@@ -25,6 +25,7 @@ name: nil - used for eliminate the "commit=Search" in the URL after a search
 </center>
 
 
-
+<% cache(cache_key_for_posts_table) do %>
 <%= render 'show_posts_table', cached: true%>
 
+<% end %>
