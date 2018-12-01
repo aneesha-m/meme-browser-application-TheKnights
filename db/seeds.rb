@@ -35,13 +35,15 @@ User.create(email: "fredrick@something.com", password: "init123")
 User.create(email: "siljie@something.com", password: "init123")
 
 # Non anonymous posts
+Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
+Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
 
-10.times do |index|
+8.times do |index|
 	Post.create!(title: Faker::BackToTheFuture.quote, img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: rand(1..6))
 end
 
 
-10.times do |index|
+8.times do |index|
 	Post.create!(title: Faker::RickAndMorty.quote, img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty, user_id: rand(1..6))
 end
 
