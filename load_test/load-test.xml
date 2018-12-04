@@ -9,7 +9,7 @@
 
   <!-- Server side setup -->
   <servers>
-    <server host="localhost" port="3000" type="tcp"></server>
+    <server host="theknights-hscale.us-west-2.elasticbeanstalk.com" port="80" type="tcp"></server>
   </servers>
 
 
@@ -17,26 +17,37 @@
     <arrivalphase phase="1" duration="2" unit="minute">
       <users arrivalrate="10" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="2" duration="2" unit="minute">
+    <arrivalphase phase="2" duration="1" unit="minute">
       <users arrivalrate="30" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="1" unit="minute">
-      <users arrivalrate="50" unit="second"></users>
+      <users arrivalrate="100" unit="second"></users>
     </arrivalphase>
   </load>
- 
+
   <options>
     <!-- Set connection timeout to 2 seconds -->
     <option name="global_ack_timeout" value="2000"></option>
     <option type="ts_http" name="user_agent">
-      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; fr-FR; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
+      <user_agent probability="100">Mozilla/5.0 (Windows; U; Windows NT 5.2; en-EN; rv:1.7.8) Gecko/20050511 Firefox/1.0.4</user_agent>
     </option>
   </options>
 
   <sessions>
     <session name="flow_1" probability="10" type="ts_http">
+
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint2" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint3" />
+      </setdynvars>
+
       <transaction name="get_root">
-        <request>
+        <request subst="true">
           <http url='/' version='1.1' method='GET'></http>
         </request>
       </transaction>
@@ -45,116 +56,17 @@
           <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Sign up' />
         </request>
       </transaction>
+      <thinktime value="5" random="true"></thinktime>
       <transaction name="make_a_post">
-        <request>
-          <http url="/posts" method="POST" version="1.1" content_type='application/json' contents='{&quot;title&quot;: &quot;alex&quot;, &quot;img&quot;: &quot;https://www.w3schools.com/w3css/img_lights.jpg&quot;}' />
+        <request subst="true">
+          <http url="/posts" method="POST" version="1.1" content_type='application/json' contents='{&quot;title&quot;: &quot;Aurora&quot;, &quot;img&quot;: &quot;https://www.w3schools.com/w3css/img_lights.jpg&quot;}' />
         </request>
       </transaction>
     </session>
 
 
     <session name="flow_2" probability="15" type="ts_http">
-      <setdynvars sourcetype="random_number" start="0" end="50">
-            <var name="rndint" />
-        </setdynvars>
-      <transaction name="get_root">
-        <request>
-          <http url='/' version='1.1' method='GET'></http>
-        </request>
-      </transaction>
-      <transaction name="sign_in_user">
-        <request subst="true">
-          <http url="/users" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='user[email]=%%ts_user_server:get_unique_id%%@test.com&amp;user[password]=abdsdf1234&amp;commit=Log in' />
-        </request>
-      </transaction>
-      <transaction name="go_to_post">
-        <request subst="true">
-          <http url="/posts/%%_rndint%%" method="GET" version="1.1" />
-        </request>
-      </transaction>
-      <transaction name="upvote_post">
-        <request>
-          <http url="/posts/%%_rndint%%/like" method="PUT" version="1.1" />
-        </request>
-      </transaction>
-      <transaction name="comment_on_post">
-        <request>
-          <http url="/posts/%%_rndint%%/comments" method="POST" version="1.1" content_type='application/json' contents="{&quot;body&quot;: &quot;This is epic&quot;}" />
-        </request>
-      </transaction>
-      <transaction name="get_root">
-        <request>
-          <http url='/' version='1.1' method='GET'></http>
-        </request>
-      </transaction>
-      <transaction name="sign_out_user">
-        <request>
-          <http url="/users/sign_out" method="DELETE" version="1.1"/>
-        </request>
-      </transaction>
-    </session>
 
-
-  <session name="flow_3" probability="10" type="ts_http">
-      <transaction name="get_root">
-        <request>
-          <http url='/' version='1.1' method='GET'></http>
-        </request>
-      </transaction>
-      <transaction name="sign_in_user">
-        <request>
-          <http url="/users" method="POST" version="1.1" content_type='application/json' contents='{&quot;user&quot;:{&quot;email&quot;:&quot;chinmay@something.com&quot;,&quot;password&quot;:&quot;init123&quot;}}' />
-        </request>
-      </transaction>
-
-      <transaction name="go_to_own_posts">
-        <request>
-          <http url="/profile/index" method="GET" version="1.1" />
-        </request>
-      </transaction>
-
-      <transaction name="go_to_post">
-        <request>
-          <http url="/posts/6" method="GET" version="1.1" />
-        </request>
-      </transaction>
-
-      <transaction name="edit_post">
-        <request>
-          <http url="/posts/6/edit" method="GET" version="1.1" />
-        </request>
-        <request subst="true">
-          <http url="/posts/6" method="POST" version="1.1" content_type='application/json' contents='{&quot;title&quot;:&quot;Changed&quot;,&quot;img&quot;:&quot;https://cdn.sharpened.com/img/sw/afv/afv_icon.png&quot;}' />
-        </request>
-      </transaction>
-
-      <transaction name="sign_out_user">
-        <thinktime value="30" random="false"></thinktime>
-        <request>
-          <http url="/users/sign_out" method="DELETE" version="1.1"/>
-        </request>
-      </transaction>
-    </session>
-
-
-    <session name="flow_4" probability="40" type="ts_http">
-      <request>
-        <http url='/' version='1.1' method='GET'></http>
-      </request>
-      <thinktime value="30" random="true"></thinktime>
-      <request>
-        <http url='/?page=2' version='1.1' method='GET'></http>
-      </request>
-      <request>
-        <http url='/?page=3' version='1.1' method='GET'></http>
-      </request>
-      <request>
-        <http url='/' version='1.1' method='GET'></http>
-      </request>
-    </session>
-
-
-    <session name="flow_5" probability="25" type="ts_http">
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint" />
       </setdynvars>
@@ -165,7 +77,129 @@
         <var name="rndint3" />
       </setdynvars>
       <transaction name="get_root">
-        <request>
+        <request subst="true">
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_in_user">
+        <request subst="true">
+          <http url="/users" method="POST" version="1.1" content_type='application/json' contents='{&quot;user&quot;:{&quot;email&quot;:&quot;navjot@something.com&quot;,&quot;password&quot;:&quot;init123&quot;}}' />
+        </request>
+      </transaction>
+      <thinktime value="2" random="true"></thinktime>
+      <transaction name="go_to_post">
+        <request subst="true">
+          <http url="/posts/%%_rndint%%" method="GET" version="1.1" />
+        </request>
+      </transaction>
+      <transaction name="upvote_post">
+        <request subst="true">
+          <http url="/posts/%%_rndint%%/like" method="PUT" version="1.1" />
+        </request>
+      </transaction>
+      <transaction name="comment_on_post">
+        <request subst="true">
+          <http url="/posts/%%_rndint%%/comments" method="POST" version="1.1" content_type='application/json' contents="{&quot;body&quot;: &quot;This is epic&quot;}" />
+        </request>
+      </transaction>
+      <transaction name="get_root">
+        <request subst="true">
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_out_user">
+        <request subst="true">
+          <http url="/users/sign_out" method="DELETE" version="1.1"/>
+        </request>
+      </transaction>
+    </session>
+
+
+    <session name="flow_3" probability="10" type="ts_http">
+
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint2" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint3" />
+      </setdynvars>
+
+      <transaction name="get_root">
+        <request subst="true">
+          <http url='/' version='1.1' method='GET'></http>
+        </request>
+      </transaction>
+      <transaction name="sign_in_user">
+        <request subst="true">
+          <http url="/users" method="POST" version="1.1" content_type='application/json' contents='{&quot;user&quot;:{&quot;email&quot;:&quot;chinmay@something.com&quot;,&quot;password&quot;:&quot;init123&quot;}}' />
+        </request>
+      </transaction>
+
+      <transaction name="go_to_own_posts">
+        <request subst="true">
+          <http url="/profile/index" method="GET" version="1.1" />
+        </request>
+      </transaction>
+
+      <transaction name="go_to_post">
+        <request subst="true">
+          <http url="/posts/6" method="GET" version="1.1" />
+        </request>
+      </transaction>
+
+      <transaction name="edit_post">
+        <request subst="true">
+          <http url="/posts/6/edit" method="GET" version="1.1" />
+        </request>
+        <request subst="true">
+          <http url="/posts/6" method="POST" version="1.1" content_type='application/json' contents='{&quot;title&quot;:&quot;Changed&quot;,&quot;img&quot;:&quot;https://cdn.sharpened.com/img/sw/afv/afv_icon.png&quot;}' />
+        </request>
+      </transaction>
+
+      <transaction name="sign_out_user">
+        <thinktime value="30" random="false"></thinktime>
+        <request subst="true">
+          <http url="/users/sign_out" method="DELETE" version="1.1"/>
+        </request>
+      </transaction>
+    </session>
+
+
+    <session name="flow_4" probability="40" type="ts_http">
+
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint2" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint3" />
+      </setdynvars>
+
+      <request subst="true">
+        <http url='/' version='1.1' method='GET'></http>
+      </request>
+      <thinktime value="10" random="true"></thinktime>
+    </session>
+
+
+    <session name="flow_5" probability="25" type="ts_http">
+
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint2" />
+      </setdynvars>
+      <setdynvars sourcetype="random_number" start="1" end="20">
+        <var name="rndint3" />
+      </setdynvars>
+      <transaction name="get_root">
+        <request subst="true">
           <http url='/' version='1.1' method='GET'></http>
         </request>
       </transaction>
@@ -174,14 +208,14 @@
           <http url="/users" method="POST" version="1.1" content_type='application/json' contents='{&quot;user&quot;:{&quot;email&quot;:&quot;aneesha@something.com&quot;,&quot;password&quot;:&quot;init123&quot;}}' />
         </request>
         <request subst="true">
-          <http url="/posts/%%_rndint%%" method="GET" version="1.1" />
+          <http url="/posts/%%_rndint3%%" method="GET" version="1.1" />
         </request>
         <thinktime value="60" random="false"></thinktime>
-        <request>
+        <request subst="true">
           <http url="/posts/%%_rndint%%/comments" method="POST" version="1.1" content_type='application/x-www-form-urlencoded' contents='comment[body]="This+is+a+new+comment";commit=Create+Comment' />
         </request>
         <request subst="true">
-          <http url="/posts/%%_rndint%%" method="GET" version="1.1" />
+          <http url="/posts/%%_rndint3%%" method="GET" version="1.1" />
         </request>
       </transaction>
       <transaction name="go_to_post2">
@@ -190,17 +224,17 @@
         </request>
       </transaction>
       <transaction name="upvote_post2">
-        <request>
+        <request subst="true">
           <http url="/posts/%%_rndint2%%/like" method="PUT" version="1.1" />
         </request>
       </transaction>
       <transaction name="downvote_post3">
-        <request>
+        <request subst="true">
           <http url="/posts/%%_rndint2%%/dislike" method="PUT" version="1.1" />
         </request>
-      </transaction>		  
+      </transaction>      
       <transaction name="sign_out_user">
-        <request>
+        <request subst="true">
           <http url="/users/sign_out" method="DELETE" version="1.1" />
         </request>
       </transaction>
