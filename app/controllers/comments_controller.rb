@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :find_commentable
   skip_before_action :verify_authenticity_token
+  before_action :find_commentable
   respond_to :json
   #before_action :upvote
 
