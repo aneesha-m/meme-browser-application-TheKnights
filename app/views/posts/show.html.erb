@@ -31,6 +31,6 @@
 
 
 <ul style="list-style-type:none">
-  <%= render(partial: 'comments/comment', collection: @post.comments) %>
+  <%= render(partial: 'comments/comment', collection: @post.comments.includes(:user, :comments)) %>
 </ul>
 

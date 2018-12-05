@@ -13,13 +13,14 @@ class PostsController < ApplicationController
     #   Post.all.order('id DESC')
     # end
     if params[:tag].present?
-      @posts = Post.tagged_with(params[:tag])
-      if @posts.blank?
-        #@posts = Post.all
+      @try_posts = Post.tagged_with(params[:tag])
+      if !@try_posts.blank?
+        @posts = @try_posts.includes(:user)
+      else
         redirect_to root_path, notice: 'Invalid Search Tag'
       end
     else
-      @posts = Post.all
+      @posts = Post.includes(:user).all
     end
   end
 
