@@ -2,6 +2,7 @@
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
   skip_before_action :verify_authenticity_token
+  respond_to :json
   # GET /resource/confirmation/new
   # def new
   #   super
