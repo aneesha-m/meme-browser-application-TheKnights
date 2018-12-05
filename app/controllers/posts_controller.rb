@@ -19,12 +19,12 @@ class PostsController < ApplicationController
         redirect_to root_path, notice: 'Invalid Search Tag'
       else
         if stale?(Post.all)
-          @posts = @posts_tagged.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+          @posts = @posts_tagged.paginate(page: params[:page], per_page: 5).order('created_at ASC').includes(:user)
         end
       end
     else
       if stale?(Post.all)
-        @posts = Post.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+        @posts = Post.paginate(page: params[:page], per_page: 5).order('created_at ASC').includes(:user)
       end
     end
     respond_to do |format|
