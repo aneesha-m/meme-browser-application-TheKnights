@@ -17,11 +17,20 @@
     <arrivalphase phase="1" duration="2" unit="minute">
       <users arrivalrate="10" unit="second"></users>
     </arrivalphase>
-    <arrivalphase phase="2" duration="1" unit="minute">
+    <arrivalphase phase="2" duration="2" unit="minute">
       <users arrivalrate="30" unit="second"></users>
     </arrivalphase>
     <arrivalphase phase="3" duration="1" unit="minute">
+      <users arrivalrate="50" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="4" duration="1" unit="minute">
+      <users arrivalrate="70" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="5" duration="1" unit="minute">
       <users arrivalrate="100" unit="second"></users>
+    </arrivalphase>
+    <arrivalphase phase="6" duration="1" unit="minute">
+      <users arrivalrate="240" unit="second"></users>
     </arrivalphase>
   </load>
 
@@ -36,6 +45,7 @@
   <sessions>
     <session name="flow_1" probability="10" type="ts_http">
 
+      <!-- Set dynvariables -->
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint" />
       </setdynvars>
@@ -67,6 +77,7 @@
 
     <session name="flow_2" probability="15" type="ts_http">
 
+      <!-- Set dynvariables -->
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint" />
       </setdynvars>
@@ -76,6 +87,8 @@
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint3" />
       </setdynvars>
+
+
       <transaction name="get_root">
         <request subst="true">
           <http url='/' version='1.1' method='GET'></http>
@@ -117,6 +130,7 @@
 
     <session name="flow_3" probability="10" type="ts_http">
 
+      <!-- Set dynvariables -->
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint" />
       </setdynvars>
@@ -126,6 +140,7 @@
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint3" />
       </setdynvars>
+
 
       <transaction name="get_root">
         <request subst="true">
@@ -155,7 +170,7 @@
           <http url="/posts/6/edit" method="GET" version="1.1" />
         </request>
         <request subst="true">
-          <http url="/posts/6" method="POST" version="1.1" content_type='application/json' contents='{&quot;title&quot;:&quot;Changed&quot;,&quot;img&quot;:&quot;https://cdn.sharpened.com/img/sw/afv/afv_icon.png&quot;}' />
+          <http url="/posts/6" method="PUT" version="1.1" content_type='application/json' contents='{&quot;title&quot;:&quot;Changed&quot;,&quot;img&quot;:&quot;https://cdn.sharpened.com/img/sw/afv/afv_icon.png&quot;}' />
         </request>
       </transaction>
 
@@ -170,6 +185,7 @@
 
     <session name="flow_4" probability="40" type="ts_http">
 
+      <!-- Set dynvariables -->
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint" />
       </setdynvars>
@@ -179,6 +195,7 @@
       <setdynvars sourcetype="random_number" start="1" end="20">
         <var name="rndint3" />
       </setdynvars>
+
 
       <request subst="true">
         <http url='/' version='1.1' method='GET'></http>
