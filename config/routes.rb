@@ -18,5 +18,7 @@ Rails.application.routes.draw do
     put "dislike", to: "comments#downvote"
   end
 
-  devise_for :users
+  devise_for :users, controllers: { sessions: 'user/sessions' }
+
+
 end
