@@ -19,6 +19,11 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, :controllers => {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    confirmations: 'users/confirmations',
+    omniauth: 'users/omniauth',
+    passwords: 'users/passwords',
+    registrations: 'users/registrations',
+    unlocks: 'users/unlocks'
   }
 end
