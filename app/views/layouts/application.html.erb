@@ -38,20 +38,12 @@
           type: 'success',
           showConfirmButton: false,
           timer: 2000
-      });
+      }).done();
     </script>
   <% end %>
 
   <% if alert -%>
-    <script>
-        swal({
-            title: 'Error',
-            text: '<%= alert %>',
-            type: 'error',
-            showConfirmButton: false,
-            timer: 2000
-        });
-    </script>
+    <p class="alert"><%= alert %></p>
   <% end %>
 
 
