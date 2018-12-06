@@ -241,8 +241,14 @@ small{
 
 
 /* Comments */
-.comment-card{
-
+#delete\/edit{
+    display: flex;
+    padding-right: 20px;
+    justify-content: end;
+    margin-top: 10px;
+}
+#delete{
+    padding-right: 15px;
 }
 #submitIt{
     background-color: #F78E69;
