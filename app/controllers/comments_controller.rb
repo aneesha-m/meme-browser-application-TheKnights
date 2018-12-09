@@ -12,6 +12,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
   end
 
+  def change
+    add_index :comments, :id
+  end
+
   def update
     #@comment = @commentable.comments.find(params[:id])
     @comment = Comment.find(params[:id])

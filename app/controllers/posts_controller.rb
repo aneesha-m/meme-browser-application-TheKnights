@@ -47,6 +47,11 @@ class PostsController < ApplicationController
   def edit
   end
 
+  def change
+    add_index :posts, [:id, :title, :tag]
+    add_index :created_at
+  end
+
   # POST /posts
   # POST /posts.json
   def create
