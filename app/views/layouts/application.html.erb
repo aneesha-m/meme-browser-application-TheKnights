@@ -16,7 +16,7 @@
       <li class="site-name"><p>MemeBrowser</p></li>
       <li class="meme-search">
         <%= form_tag(posts_path, method: :get) do %>
-          <%= text_field_tag :tag, params[:tag], placeholder: "Search for memes", :id=>"searchField" %>
+          <%= text_field_tag :tag, params[:tag], autofocus: true, placeholder: "Search for memes", :id=>"searchField", :required => 'required' %>
           <%= submit_tag 'Submit', name: nil, :id=>"searchBtn" %>
         <% end %></li>
 

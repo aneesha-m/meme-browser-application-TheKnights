@@ -29,3 +29,4 @@ log/development.log
 Gemfile.lock
 #ignore all the useless OSX files
 **/*.DS_Store
+.DS_Store
