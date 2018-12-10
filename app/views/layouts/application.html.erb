@@ -19,7 +19,7 @@
           <%= text_field_tag :tag, params[:tag], autofocus: true, placeholder: "Search for memes", :id=>"searchField", :required => 'required' %>
           <%= submit_tag 'Submit', name: nil, :id=>"searchBtn" %>
         <% end %></li>
-
+        <%=image_tag("new_post_small.png") %><li id="signin"><%= link_to 'New Post', new_post_path%></li>
       <% if user_signed_in? %>
         <%=image_tag("post-it.png") %><li id="signin"><%= link_to 'my posts', profile_index_path %> </li>
         <%=image_tag("reg3.png") %><li id="signup"><%= link_to 'sign out', destroy_user_session_path, method: :delete %></li>
