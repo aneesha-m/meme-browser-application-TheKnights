@@ -54,6 +54,9 @@ ul {
     color: rgba(117,117,117 ,1);
     box-shadow: 5px 10px 20px -20px rgba(191, 230, 196,1);
     background-color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 header ul{
     margin: 0px;
