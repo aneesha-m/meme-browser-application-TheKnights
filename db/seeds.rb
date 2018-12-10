@@ -11,6 +11,14 @@ Post.delete_all
 User.delete_all
 Comment.delete_all
 
+# Creating users for posts that are not anonymous
+User.create(email: "something@something.com", password: "init123")
+User.create(email: "chinmay@something.com", password: "init123")
+User.create(email: "aneesha@something.com", password: "init123")
+User.create(email: "navjot@something.com", password: "init123")
+User.create(email: "fredrick@something.com", password: "init123")
+User.create(email: "siljie@something.com", password: "init123")
+
 # Anonymous Posts
 
 posts_list = [
@@ -27,41 +35,34 @@ posts_list.each do |title, img, tags|
   Post.create(title: title, img: img, all_tags: tags)
 end
 
-# Creating users for posts that are not anonymous
-User.create(email: "something@something.com", password: "init123")
-User.create(email: "chinmay@something.com", password: "init123")
-User.create(email: "aneesha@something.com", password: "init123")
-User.create(email: "navjot@something.com", password: "init123")
-User.create(email: "fredrick@something.com", password: "init123")
-User.create(email: "siljie@something.com", password: "init123")
 
 # Generate only unique titles
 Faker::UniqueGenerator.clear
 
 
 # Non anonymous posts
-Post.create!(title: Faker::BackToTheFuture.quote[6..50], img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
-Post.create!(title: Faker::BackToTheFuture.quote[6..50], img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
+# Post.create!(title: Faker::BackToTheFuture.quote[6..50], img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
+# Post.create!(title: Faker::BackToTheFuture.quote[6..50], img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: 2)
 
-8.times do |index|
-  Post.create!(title: Faker::BackToTheFuture.quote[6..20], img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: rand(1..6))
-end
-
-
-8.times do |index|
-  Post.create!(title: Faker::RickAndMorty.quote[6..20], img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty, user_id: rand(1..6))
-end
+# 8.times do |index|
+#   Post.create!(title: Faker::BackToTheFuture.quote[6..50], img: "https://i.imgflip.com/jntjw.jpg", all_tags: sample_tags_list_back_to_future, user_id: rand(1..6))
+# end
 
 
+# 8.times do |index|
+#   Post.create!(title: Faker::RickAndMorty.quote[6..50], img: "https://i.imgflip.com/rpvvq.jpg", all_tags: sample_tags_list_rick_and_morty, user_id: rand(1..6))
+# end
 
-# create comments
-50.times do |index|
-  Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..22), commentable_type: "Post", user_id: rand(1..6))
-end
 
-50.times do |index|
-  Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..22), commentable_type: "Post", user_id: rand(1..6))
-end
+
+# # create comments
+# 50.times do |index|
+#   Comment.create!(body: Faker::FamilyGuy.quote, commentable_id: rand(1..22), commentable_type: "Post", user_id: rand(1..6))
+# end
+
+# 50.times do |index|
+#   Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..22), commentable_type: "Post", user_id: rand(1..6))
+# end
 
 # 100.times do |index|
 #   Comment.create!(body: Faker::HarryPotter.quote, commentable_id: rand(1..100), commentable_type: "Comment", user_id: rand(1..6))
