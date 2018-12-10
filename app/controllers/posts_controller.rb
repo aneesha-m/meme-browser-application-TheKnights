@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_post, only: [:show]
   before_action :check_access, only: [:edit, :update, :destroy]
+  respond_to :json
 
   # GET /posts
   # GET /posts.json
@@ -10,14 +12,21 @@ class PostsController < ApplicationController
     # else
     #   Post.all.order('id DESC')
     # end
-    if params[:tag].present?
-      @posts = Post.tagged_with(params[:tag])
-      if @posts.blank?
+
+    if params[:tag].present? and not params[:tag].nil?
+      @posts_tagged = Post.tagged_with(params[:tag])
+      if @posts_tagged.blank?
         #@posts = Post.all
-        redirect_to root_path, alert: '0 results found'
+        redirect_to root_path, notice: 'Invalid Search Tag'
+      else
+        @posts = @posts_tagged.paginate(page: params[:page], per_page: 5).order('created_at DESC')
       end
     else
-      @posts = Post.all
+      @posts = Post.paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    end
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
